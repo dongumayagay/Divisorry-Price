@@ -4696,32 +4696,38 @@ var init_shims = __esm({
   }
 });
 
-// .svelte-kit/output/server/chunks/__layout-d7e423fc.js
-var layout_d7e423fc_exports = {};
-__export(layout_d7e423fc_exports, {
+// .svelte-kit/output/server/chunks/__layout-10862be9.js
+var layout_10862be9_exports = {};
+__export(layout_10862be9_exports, {
   default: () => _layout
 });
-var Navbar, _layout;
-var init_layout_d7e423fc = __esm({
-  ".svelte-kit/output/server/chunks/__layout-d7e423fc.js"() {
+var Navbar, Footer, _layout;
+var init_layout_10862be9 = __esm({
+  ".svelte-kit/output/server/chunks/__layout-10862be9.js"() {
     init_shims();
-    init_app_bcc22075();
+    init_app_0749121a();
     Navbar = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `<nav class="${"max-w-full h-16 bg-transparent shadow-md flex items-center "}"><div class="${"container flex justify-between mx-auto px-4"}"><a href="${"/"}" class="${"text-lg text-gray-100 font-bold tracking-wider bg-red-600 shadow-sm px-2 py-2 rounded-lg animate-wiggle "}">Divisorry Price</a>
-		<div class="${"flex space-x-5 items-center text-gray-600"}"><a href="${"/"}"><svg xmlns="${"http://www.w3.org/2000/svg"}" class="${"h-7 w-7"}" viewBox="${"0 0 20 20"}" fill="${"currentColor"}"><path fill-rule="${"evenodd"}" d="${"M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"}" clip-rule="${"evenodd"}"></path></svg></a>
-			<a href="${"/"}"><svg xmlns="${"http://www.w3.org/2000/svg"}" class="${"h-7 w-7"}" viewBox="${"0 0 20 20"}" fill="${"currentColor"}"><path fill-rule="${"evenodd"}" d="${"M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"}" clip-rule="${"evenodd"}"></path></svg></a>
-			<a href="${"/"}"><svg xmlns="${"http://www.w3.org/2000/svg"}" class="${"h-7 w-7"}" viewBox="${"0 0 20 20"}" fill="${"currentColor"}"><path d="${"M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"}"></path></svg></a></div></div></nav>`;
+      return `<nav class="${"max-w-full py-1 bg-white shadow-lg sticky top-0 z-10"}"><div class="${"container flex justify-between mx-auto px-6 items-center space-x-5 text-black/70"}"><a href="${"/"}" class="${"pt-2 mr-auto"}"><img class="${"animate-wiggle h-full"}" src="${"/assets/logo.svg"}" alt="${"brand logo"}"></a>
+		<a href="${"/"}"><svg xmlns="${"http://www.w3.org/2000/svg"}" class="${"h-6 w-6"}" fill="${"none"}" viewBox="${"0 0 24 24"}" stroke="${"currentColor"}"><path stroke-linecap="${"round"}" stroke-linejoin="${"round"}" stroke-width="${"2"}" d="${"M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"}"></path></svg></a>
+		<a href="${"/"}"><svg xmlns="${"http://www.w3.org/2000/svg"}" class="${"h-6 w-6"}" fill="${"none"}" viewBox="${"0 0 24 24"}" stroke="${"currentColor"}"><path stroke-linecap="${"round"}" stroke-linejoin="${"round"}" stroke-width="${"2"}" d="${"M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"}"></path></svg></a></div></nav>`;
+    });
+    Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      return `<footer class="${"bg-black/90 p-10"}"><div class="${"container mx-auto flex flex-col space-y-7 md:space-y-0 md:flex-row-reverse md:justify-between md:px-8"}"><nav class="${"text-white/80 flex justify-around md:space-x-7"}"><a href="${"/"}">About</a>
+			<a href="${"/"}">Contact</a></nav>
+		<hr class="${"md:hidden"}">
+		<p class="${"text-white/50 text-center"}">Copyright \xA9 2021 Divisorry \u20B1rice All Rights Reserved</p></div></footer>`;
     });
     _layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       return `<div class="${"bg-white h-screen"}">${validate_component(Navbar, "Navbar").$$render($$result, {}, {}, {})}
-	${slots.default ? slots.default({}) : ``}</div>`;
+	${slots.default ? slots.default({}) : ``}
+	${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}</div>`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/error-9d72a1a5.js
-var error_9d72a1a5_exports = {};
-__export(error_9d72a1a5_exports, {
+// .svelte-kit/output/server/chunks/error-ca22b52f.js
+var error_ca22b52f_exports = {};
+__export(error_ca22b52f_exports, {
   default: () => Error2,
   load: () => load
 });
@@ -4729,10 +4735,10 @@ function load({ error: error2, status }) {
   return { props: { error: error2, status } };
 }
 var Error2;
-var init_error_9d72a1a5 = __esm({
-  ".svelte-kit/output/server/chunks/error-9d72a1a5.js"() {
+var init_error_ca22b52f = __esm({
+  ".svelte-kit/output/server/chunks/error-ca22b52f.js"() {
     init_shims();
-    init_app_bcc22075();
+    init_app_0749121a();
     Error2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       let { status } = $$props;
       let { error: error2 } = $$props;
@@ -4752,18 +4758,18 @@ ${error2.stack ? `<pre>${escape(error2.stack)}</pre>` : ``}`;
   }
 });
 
-// .svelte-kit/output/server/chunks/index-2a8a0840.js
-var index_2a8a0840_exports = {};
-__export(index_2a8a0840_exports, {
+// .svelte-kit/output/server/chunks/index-a84eca01.js
+var index_a84eca01_exports = {};
+__export(index_a84eca01_exports, {
   default: () => Routes
 });
 var CatergoryCard, css, Categories, Header, Routes;
-var init_index_2a8a0840 = __esm({
-  ".svelte-kit/output/server/chunks/index-2a8a0840.js"() {
+var init_index_a84eca01 = __esm({
+  ".svelte-kit/output/server/chunks/index-a84eca01.js"() {
     init_shims();
-    init_app_bcc22075();
+    init_app_0749121a();
     CatergoryCard = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `<div class="${"inline-block px-3"}"><div class="${"w-64 h-72 max-w-xs overflow-hidden rounded-lg shadow-md bg-white hover:shadow-2xl transition-shadow duration-300 ease-in-out"}"></div></div>`;
+      return `<div style="${"aspect-ratio: 2/3;"}" class="${"w-64 mb-12 overflow-hidden rounded-3xl shadow-md border border-gray-300 bg-white hover:shadow-2xl transition-shadow duration-300 ease-in-out inline-block"}"></div>`;
     });
     css = {
       code: ".hide-scroll-bar.svelte-1966hy9{-ms-overflow-style:none;scrollbar-width:none}.hide-scroll-bar.svelte-1966hy9::-webkit-scrollbar{display:none}",
@@ -4771,24 +4777,24 @@ var init_index_2a8a0840 = __esm({
     };
     Categories = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css);
-      return `<div class="${"flex flex-col bg-white m-auto p-auto"}"><h1 class="${"flex py-5 lg:px-20 md:px-10 px-5 lg:mx-40 md:mx-20 mx-5 font-bold text-4xl text-gray-800"}">Example
-	</h1>
-	<div class="${"flex overflow-x-scroll pb-10 hide-scroll-bar svelte-1966hy9"}"><div class="${"flex flex-nowrap lg:ml-40 md:ml-20 ml-10 "}">${each([...Array(5).keys()], (i) => `${validate_component(CatergoryCard, "CatergoryCard").$$render($$result, {}, {}, {})}`)}</div></div>
-</div>`;
+      return `<h1 class="${"container mx-auto px-10 my-8 text-2xl font-semibold"}">Shop by Categories</h1>
+<section class="${"flex overflow-x-scroll hide-scroll-bar  svelte-1966hy9"}"><div class="${"flex flex-nowrap px-10 lg:mx-auto space-x-8 "}">${each([...Array(4).keys()], (i) => `${validate_component(CatergoryCard, "CatergoryCard").$$render($$result, {}, {}, {})}`)}</div>
+</section>`;
     });
     Header = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `<header class="${"h-96 bg-cover bg-center bg-no-repeat"}" style="${"background-image: url('/assets/Divisoria.jpg');"}"><div class="${"w-full h-full bg-gradient-to-t from-gray-900 via-gray-900/80 to-gray-900/30 px-12 flex items-center justify-center"}"><div class="${"text-center space-y-2 transform -rotate-2"}"><h1 class="${"text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-wider flex flex-col"}">Pasok mga
-				<div class="${"text-red-500 animate-bouncelow ml-3 mt-3"}">Suki!</div></h1>
-			<h2 class="${"text-xl md:text-2xl lg:text-3xl xl:text-4xl text-gray-300"}">Presyong Divisoria</h2></div></div></header>`;
+      return `<header class="${"bg-cover bg-center bg-no-repeat"}" style="${"background-image: url('/assets/Divisoria.jpg');"}"><div class="${"w-full h-full bg-gradient-to-t from-black/90 via-black/70 to-black/30 px-12 flex items-center justify-center py-20 sm:py-40"}"><article class="${"text-center space-y-5 transform -rotate-2"}"><h1 class="${"text-white text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-wider flex flex-col md:flex-row"}">Pasok mga
+				<span class="${"text-yellow-500 animate-bouncelow ml-3 mt-3 md:mt-0"}">Suki!</span></h1>
+			<h2 class="${"text-xl md:text-2xl lg:text-3xl xl:text-4xl text-white/80"}">Presyong Divisoria</h2></article></div></header>`;
     });
     Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
+      return `${$$result.head += `${$$result.title = `<title>Divisorry \u20B1rice</title>`, ""}`, ""}
+${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
 ${validate_component(Categories, "Categories").$$render($$result, {}, {}, {})}`;
     });
   }
 });
 
-// .svelte-kit/output/server/chunks/app-bcc22075.js
+// .svelte-kit/output/server/chunks/app-0749121a.js
 function get_single_valued_header(headers, key) {
   const value = headers[key];
   if (Array.isArray(value)) {
@@ -6061,9 +6067,9 @@ function init(settings = default_settings) {
     amp: false,
     dev: false,
     entry: {
-      file: assets + "/_app/start-26cc434b.js",
+      file: assets + "/_app/start-cf65cf21.js",
       css: [assets + "/_app/assets/start-d977ffc4.css"],
-      js: [assets + "/_app/start-26cc434b.js", assets + "/_app/chunks/vendor-67369cac.js"]
+      js: [assets + "/_app/start-cf65cf21.js", assets + "/_app/chunks/vendor-86f8f440.js"]
     },
     fetched: void 0,
     floc: false,
@@ -6107,8 +6113,8 @@ function render(request, {
   return respond({ ...request, host }, options, { prerender });
 }
 var __accessCheck, __privateGet, __privateAdd, __privateSet, _map, chars, unsafeChars, reserved, escaped$1, objectProtoOwnPropertyNames, subscriber_queue, escape_json_string_in_html_dict, escape_html_attr_dict, s$1, s, absolute, ReadOnlyFormData, current_component, escaped, missing_component, on_destroy, css2, Root, base, assets, user_hooks, template, options, default_settings, empty, manifest, get_hooks, module_lookup, metadata_lookup;
-var init_app_bcc22075 = __esm({
-  ".svelte-kit/output/server/chunks/app-bcc22075.js"() {
+var init_app_0749121a = __esm({
+  ".svelte-kit/output/server/chunks/app-0749121a.js"() {
     init_shims();
     __accessCheck = (obj, member, msg) => {
       if (!member.has(obj))
@@ -6270,12 +6276,15 @@ ${``}`;
       __proto__: null,
       [Symbol.toStringTag]: "Module"
     });
-    template = ({ head, body }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body>\n		<div id="svelte">' + body + "</div>\n	</body>\n</html>\n";
+    template = ({ head, body }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<link rel="preconnect" href="https://fonts.googleapis.com" />\n		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n		<link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet" />\n		' + head + `
+	</head>
+	<body style="font-family: 'Poppins', sans-serif">
+		<div id="svelte">` + body + "</div>\n	</body>\n</html>\n";
     options = null;
     default_settings = { paths: { "base": "", "assets": "" } };
     empty = () => ({});
     manifest = {
-      assets: [{ "file": "assets/Divisoria.jpg", "size": 50195, "type": "image/jpeg" }, { "file": "favicon.png", "size": 1571, "type": "image/png" }],
+      assets: [{ "file": "assets/Divisoria.jpg", "size": 58288, "type": "image/jpeg" }, { "file": "assets/logo.svg", "size": 8685, "type": "image/svg+xml" }, { "file": "favicon.png", "size": 3253, "type": "image/png" }],
       layout: "src/routes/__layout.svelte",
       error: ".svelte-kit/build/components/error.svelte",
       routes: [
@@ -6295,11 +6304,11 @@ ${``}`;
       externalFetch: hooks.externalFetch || fetch
     });
     module_lookup = {
-      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_d7e423fc(), layout_d7e423fc_exports)),
-      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_9d72a1a5(), error_9d72a1a5_exports)),
-      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_2a8a0840(), index_2a8a0840_exports))
+      "src/routes/__layout.svelte": () => Promise.resolve().then(() => (init_layout_10862be9(), layout_10862be9_exports)),
+      ".svelte-kit/build/components/error.svelte": () => Promise.resolve().then(() => (init_error_ca22b52f(), error_ca22b52f_exports)),
+      "src/routes/index.svelte": () => Promise.resolve().then(() => (init_index_a84eca01(), index_a84eca01_exports))
     };
-    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-edceda6b.js", "css": ["assets/pages/__layout.svelte-c98fdb3b.css"], "js": ["pages/__layout.svelte-edceda6b.js", "chunks/vendor-67369cac.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-69be6f90.js", "css": [], "js": ["error.svelte-69be6f90.js", "chunks/vendor-67369cac.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-49fd6596.js", "css": ["assets/pages/index.svelte-f931494d.css"], "js": ["pages/index.svelte-49fd6596.js", "chunks/vendor-67369cac.js"], "styles": [] } };
+    metadata_lookup = { "src/routes/__layout.svelte": { "entry": "pages/__layout.svelte-293da115.js", "css": ["assets/pages/__layout.svelte-d663a566.css"], "js": ["pages/__layout.svelte-293da115.js", "chunks/vendor-86f8f440.js"], "styles": [] }, ".svelte-kit/build/components/error.svelte": { "entry": "error.svelte-f75a9a22.js", "css": [], "js": ["error.svelte-f75a9a22.js", "chunks/vendor-86f8f440.js"], "styles": [] }, "src/routes/index.svelte": { "entry": "pages/index.svelte-fc2f5f88.js", "css": ["assets/pages/index.svelte-f931494d.css"], "js": ["pages/index.svelte-fc2f5f88.js", "chunks/vendor-86f8f440.js"], "styles": [] } };
   }
 });
 
@@ -6311,7 +6320,7 @@ init_shims();
 
 // .svelte-kit/output/server/app.js
 init_shims();
-init_app_bcc22075();
+init_app_0749121a();
 
 // .svelte-kit/netlify/entry.js
 init();

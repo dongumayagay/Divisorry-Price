@@ -3,7 +3,7 @@
 	style="background-image: url('/assets/Divisoria.jpg');"
 >
 	<div
-		class="w-full h-full bg-gradient-to-t from-black/90 via-black/70 to-black/30 px-12 flex items-center justify-center py-20 sm:py-40"
+		class=" py-20 sm:py-40 md:py-48 bg-gradient-to-t from-black/90 via-black/70 to-black/30 px-12 flex items-center justify-center"
 	>
 		<article class="text-center space-y-5 transform -rotate-2">
 			<h1

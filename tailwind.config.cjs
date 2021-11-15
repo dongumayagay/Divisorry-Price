@@ -12,12 +12,12 @@ const config = {
 		},
 		extend: {
 			keyframes: {
-				wiggle: {
+				sway: {
 					'0%, 100%': {
-						transform: 'rotate(-2deg)'
+						transform: 'rotate(-3deg)'
 					},
 					'50%': {
-						transform: 'rotate(2deg)'
+						transform: 'rotate(3deg)'
 					}
 				},
 				bounceslow: {
@@ -32,7 +32,7 @@ const config = {
 				}
 			},
 			animation: {
-				wiggle: 'wiggle 2s ease-in-out infinite',
+				sway: 'sway 3s ease-in-out infinite',
 				bouncelow: 'bounceslow .75s infinite'
 			}
 		}

@@ -4,8 +4,7 @@
 	import Footer from '$lib/Footer.svelte';
 </script>
 
-<div class="bg-white h-screen">
-	<Navbar />
-	<slot />
-	<Footer />
-</div>
+<svelte:body class="bg-white h-screen" />
+<Navbar />
+<slot />
+<Footer />

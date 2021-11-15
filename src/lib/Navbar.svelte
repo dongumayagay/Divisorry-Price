@@ -1,12 +1,12 @@
 <nav class="max-w-full py-1 bg-white shadow-lg sticky top-0 z-10">
-	<div class="container flex justify-between mx-auto px-6 items-center space-x-5 text-black/70">
+	<div class="container flex justify-between mx-auto px-6 items-center space-x-5 lg:space-x-8 text-black/70">
 		<a href="/" class="pt-2 mr-auto">
-			<img class="animate-wiggle h-full" src="/assets/logo.svg" alt="brand logo" />
+			<img class="animate-sway origin-top h-14 lg:h-20" src="/assets/logo.webp" alt="brand logo" />
 		</a>
 		<a href="/"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="h-6 w-6"
+				class="h-7 lg:h-9"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"
@@ -22,7 +22,7 @@
 		<a href="/"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
-				class="h-6 w-6"
+				class="h-7 lg:h-9"
 				fill="none"
 				viewBox="0 0 24 24"
 				stroke="currentColor"
