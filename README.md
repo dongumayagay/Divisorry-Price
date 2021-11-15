@@ -1,30 +1,30 @@
-# create-svelte
+# What
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
+Ecommerce Project that uses Sveltekit and Tailwind
 
-## Creating a project
+## Design insipiration
 
-If you're seeing this, you've probably already done this step. Congrats!
+Since I'm not good at design. here is some sites that i looked up for some design inspiration.
 
-```bash
-# create a new project in the current directory
-npm init svelte@next
-
-# create a new project in my-app
-npm init svelte@next my-app
-```
-
-> Note: the `@next` is temporary
+- peakdesign.com
+- wanrdrd.com
+- shopmoment.com
+- lttstore.com
+- shopmrbeast.com
+- represent.com/store/pewdiepie
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
 ```bash
+# run web server
 npm run dev
 
-# or start the server and open the app in a new browser tab
+# run wed server and open the app in a new browser tab
 npm run dev -- --open
+
+#run web server and expost to local network
+npm run dev -- --host
+
 ```
 
 ## Building
