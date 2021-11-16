@@ -1,10 +1,10 @@
 <script>
 	import CatergoryCard from './CatergoryCard.svelte';
 	export let categories = [
-		{ name: "men's clothing", image: '/static/categories/mens.jpg' },
-		{ name: "women's clothing", image: '/static/categories/womens.jpg' },
-		{ name: 'jewelry', image: '/static/categories/jewelry.jpg' },
-		{ name: 'electronics', image: '/static/categories/electronics.jpg' }
+		{ name: "men's clothing", image: '/categories/mens.jpg' },
+		{ name: "women's clothing", image: '/categories/womens.jpg' },
+		{ name: 'jewelry', image: '/categories/jewelry.jpg' },
+		{ name: 'electronics', image: '/categories/electronics.jpg' }
 	];
 </script>
 

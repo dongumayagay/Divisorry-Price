@@ -1,11 +1,12 @@
 <script>
 	import Cart from './SideCart.svelte';
-	const logo = '/static/logo.webp';
+	const logo = '/logo.webp';
 	let showCart = false;
 </script>
 
 <nav class="max-w-full py-1 bg-white shadow-lg sticky top-0 z-10">
 	<div
+		aria-label="Storefront"
 		class="container flex justify-between mx-auto px-6 items-center space-x-5 lg:space-x-8 text-black/70"
 	>
 		<a sveltekit:prefetch href="/" class="pt-2 mr-auto">
@@ -15,7 +16,7 @@
 				alt="brand logo"
 			/>
 		</a>
-		<a href="/"
+		<button aria-label="search"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-7 lg:h-9"
@@ -29,9 +30,9 @@
 					stroke-width="2"
 					d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
 				/>
-			</svg></a
+			</svg></button
 		>
-		<button on:click={() => (showCart = true)}
+		<button aria-label="show cart" on:click={() => (showCart = true)}
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-7 lg:h-9"
