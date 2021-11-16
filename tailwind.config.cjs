@@ -32,7 +32,7 @@ const config = {
 				}
 			},
 			animation: {
-				sway: 'sway 3s ease-in-out infinite',
+				sway: 'sway 2.5s ease-in-out infinite',
 				bouncelow: 'bounceslow .75s infinite'
 			}
 		}

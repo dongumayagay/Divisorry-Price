@@ -4,7 +4,10 @@
 	import Footer from '$lib/Footer.svelte';
 </script>
 
-<svelte:body class="bg-white h-screen" />
-<Navbar />
-<slot />
-<Footer />
+<div class="min-h-screen flex flex-col">
+	<Navbar />
+	<main>
+		<slot />
+	</main>
+	<Footer />
+</div>

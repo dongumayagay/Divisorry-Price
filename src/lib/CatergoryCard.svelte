@@ -1,19 +1,22 @@
 <script>
+	import { scale } from 'svelte/transition';
 	export let category;
+	let showLink = false;
 </script>
 
 <section
-	class="w-64 lg:w-80 mb-12 rounded-3xl shadow-md border border-gray-300 hover:shadow-2xl transition-shadow duration-300 ease-in-out relative p-5"
+	on:mouseenter={() => (showLink = true)}
+	on:mouseleave={() => (showLink = false)}
+	style="aspect-ratio: 2/3; background-image:url({category.image});"
+	class="w-64 lg:w-80 mb-14 rounded-3xl shadow-md hover:shadow-2xl transition-shadow duration-400 ease-in-out bg-contain bg-center bg-no-repeat bg-origin-content p-5 flex justify-center items-center "
 >
-	<img style="aspect-ratio: 2/3;" class="" src={category.image} alt="" />
-	<div
-		href="/"
-		class="absolute left-0 top-0 w-full h-full rounded-3xl hover:bg-gradient-to-t from-black/95 via-black/75 to-transparent transition-all duration-300 ease-in-out flex items-center justify-center group"
-	>
-		<button
-			class="hidden group-hover:flex text-white text-xl uppercase tracking-widest font-semibold text-center items-center justify-center w-full h-full rounded-3xl"
+	{#if showLink}
+		<a
+			href="/"
+			transition:scale
+			class="bg-black/95 text-white/95 text-lg lg:text-xl py-4 px-8 border border-white/50 hover:bg-gray-800
+			transition-all duration-300 ease-in-out capitalize tracking-wider
+			">{category.name}</a
 		>
-			{category.name}
-		</button>
-	</div>
+	{/if}
 </section>
