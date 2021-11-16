@@ -1,5 +1,5 @@
 <script>
-	export let Divisoria;
+	const Divisoria = 'static/Divisoria.jpg';
 </script>
 
 <header class="bg-cover bg-center bg-no-repeat" style="background-image: url({Divisoria});">

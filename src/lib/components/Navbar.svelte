@@ -1,6 +1,6 @@
 <script>
 	import Cart from './SideCart.svelte';
-	export let logo;
+	const logo = '/static/logo.webp';
 	let showCart = false;
 </script>
 
@@ -51,5 +51,5 @@
 </nav>
 
 {#if showCart}
-	<Cart on:closeCart={()=>showCart=false}/>
+	<Cart on:closeCart={() => (showCart = false)} />
 {/if}

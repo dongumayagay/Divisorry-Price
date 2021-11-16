@@ -1,6 +1,11 @@
 <script>
 	import CatergoryCard from './CatergoryCard.svelte';
-	export let categories;
+	export let categories = [
+		{ name: "men's clothing", image: '/static/categories/mens.jpg' },
+		{ name: "women's clothing", image: '/static/categories/womens.jpg' },
+		{ name: 'jewelry', image: '/static/categories/jewelry.jpg' },
+		{ name: 'electronics', image: '/static/categories/electronics.jpg' }
+	];
 </script>
 
 <h1 class="container mx-auto px-10 my-8 text-2xl lg:text-4xl 2xl:text-5xl font-bold">
