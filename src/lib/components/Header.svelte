@@ -1,7 +1,8 @@
-<header
-	class="bg-cover bg-center bg-no-repeat"
-	style="background-image: url('/assets/Divisoria.jpg');"
->
+<script>
+	export let Divisoria;
+</script>
+
+<header class="bg-cover bg-center bg-no-repeat" style="background-image: url({Divisoria});">
 	<div
 		class=" py-20 sm:py-40 md:py-48 bg-gradient-to-t from-black/90 via-black/70 to-black/30 px-12 flex items-center justify-center"
 	>

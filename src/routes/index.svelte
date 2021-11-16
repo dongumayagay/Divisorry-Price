@@ -26,11 +26,12 @@
 </script>
 
 <script>
-	import Categories from '$lib/Categories.svelte';
-	import Header from '$lib/Header.svelte';
+	import Categories from '$lib/components/Categories.svelte';
+	import Header from '$lib/components/Header.svelte';
+	import Divisoria from '$lib/assets/Divisoria.jpg';
 	export let categories;
 </script>
 
 <svelte:head><title>Divisorry ₱rice</title></svelte:head>
-<Header />
+<Header {Divisoria} />
 <Categories {categories} />
