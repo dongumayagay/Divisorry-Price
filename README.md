@@ -1,6 +1,7 @@
 # What
 
-Ecommerce Project that uses Sveltekit and Tailwind
+Ecommerce Project that uses [SvelteKit](https://kit.svelte.dev/) and [Tailwind CSS](https://tailwindcss.com/)  
+Products used in the project is from [Fake Store API](https://fakestoreapi.com/)
 
 ## Design insipiration
 
@@ -16,14 +17,17 @@ Since I'm not good at design. here is some sites that i looked up for some desig
 ## Developing
 
 ```bash
-# run web server
+# run local web server
 npm run dev
 
-# run wed server and open the app in a new browser tab
+# open the app in a new browser tab
 npm run dev -- --open
 
-#run web server and expost to local network
+#expose to local network
 npm run dev -- --host
+
+#for opening the app and exposing it in local network
+npm run dev -- --open --host
 
 ```
 
