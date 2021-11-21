@@ -8,7 +8,7 @@
 	];
 </script>
 
-<h1 class="container mx-auto px-10 my-8 text-2xl lg:text-4xl 2xl:text-5xl font-bold">
+<h1 class="container mx-auto text-center my-8 text-2xl lg:text-4xl 2xl:text-5xl font-bold">
 	Shop by Categories
 </h1>
 <div class="flex overflow-x-auto mb-16">
@@ -20,7 +20,7 @@
 		{/each}
 	</div>
 </div>
-<div class="container mx-auto px-10 my-8 mb-20">
+<div class="container text-center mx-auto px-10 my-8 mb-20">
 	<a
 		href="/"
 		class="bg-black/95 text-white/95 text-lg lg:text-xl py-4 px-8 border-white/50 hover:bg-gray-800

@@ -25,15 +25,24 @@ const config = {
 						transform: 'translateY(-15%)',
 						'animation-timing-function': 'cubic-bezier(0.8,0,1,1)'
 					},
-					'50%': {	
+					'50%': {
 						transform: 'none',
 						'animation-timing-function': 'cubic-bezier(0,0,0.2,1)'
+					}
+				},
+				scrolltext: {
+					'0%': {
+						transform: 'translateX(100%)'
+					},
+					'100%': {
+						transform: 'translateX(-100%)'
 					}
 				}
 			},
 			animation: {
 				sway: 'sway 2s ease-in-out infinite',
-				bouncelow: 'bounceslow .75s infinite'
+				bouncelow: 'bounceslow .75s infinite',
+				scrolltext: 'scrolltext 20s linear infinite'
 			}
 		}
 	},
