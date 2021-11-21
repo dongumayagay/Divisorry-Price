@@ -9,7 +9,7 @@
 		aria-label="Storefront"
 		class="container flex justify-between mx-auto px-6 items-center space-x-5 lg:space-x-8 text-black/70"
 	>
-		<a sveltekit:prefetch href="/" class="pt-2 mr-auto">
+		<a href="/" class="pt-2 mr-auto">
 			<img
 				class="animate-sway origin-top h-14 lg:h-20 transition-all duration-500 ease-in-out"
 				src={logo}

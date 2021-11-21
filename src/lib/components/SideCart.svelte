@@ -5,8 +5,8 @@
 </script>
 
 <aside
-	transition:fly={{ opacity: 1, x: 500 }}
-	class="z-20 fixed inset-y-0 right-0 w-[500px] max-w-full h-full bg-white overflow-y-auto ml-auto flex flex-col p-4"
+	transition:fly={{ opacity: 1, x: 640 }}
+	class="z-20 fixed inset-y-0 right-0 w-[640px] max-w-full h-full bg-white overflow-y-auto ml-auto flex flex-col p-4"
 >
 	<nav class="flex items-center justify-between border-b-2 border-black/40 pb-4 md:pb-5">
 		<h1 class="text-xl md:text-3xl text-black/70 font-light tracking-wide pl-3">Shopping Cart</h1>
@@ -28,11 +28,12 @@
 		>
 	</nav>
 	<main class="flex flex-col justify-center items-center flex-grow">
-		<div class="flex flex-col justify-center items-center space-y-6">
-			<h1 class="text-2xl font-light">Your cart is empty</h1>
+		<div class="flex flex-col justify-center items-center space-y-6 md:space-y-8">
+			<h1 class="text-2xl md:text-4xl font-light">Your cart is empty</h1>
 			<button
 				on:click={() => dispatch('closeCart')}
-				class="text-lg bg-black/95 text-white/95 py-3 px-6 rounded-md">Continue shopping</button
+				class="text-lg md:text-xl bg-black/95 text-white/95 py-3 px-6 rounded-md"
+				>Continue shopping</button
 			>
 		</div>
 		<div class=" h-24" />
@@ -42,5 +43,5 @@
 <div
 	transition:fade={{ duration: 200 }}
 	on:click={() => dispatch('closeCart')}
-	class="z-10 fixed inset-0 bg-black/50 backdrop-blur-sm"
+	class="z-10 fixed inset-0 bg-black/50 "
 />
