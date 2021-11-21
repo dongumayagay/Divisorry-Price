@@ -3,6 +3,6 @@
 	import Header from '$lib/components/Header.svelte';
 </script>
 
-<svelte:head><title>Divisorry ₱rice</title></svelte:head>
+<svelte:head><title>Divisorry Price</title></svelte:head>
 <Header />
 <Categories />

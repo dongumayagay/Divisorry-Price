@@ -1,4 +1,4 @@
-<svelte:head><title>Divisorry ₱rice - Contact</title></svelte:head>
+<svelte:head><title>Divisorry Price - Contact</title></svelte:head>
 <main class="container mx-auto p-8">
 	<h1 class="text-center text-4xl font-bold">Contact</h1>
 	<p class="text-lg my-4">
