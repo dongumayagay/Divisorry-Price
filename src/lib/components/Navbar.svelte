@@ -1,7 +1,9 @@
 <script>
+	import Searchbar from './Searchbar.svelte';
 	import Cart from './SideCart.svelte';
 	const logo = '/logo.webp';
 	let showCart = false;
+	let showSearchbar = false;
 </script>
 
 <nav class="max-w-full py-1 bg-white shadow-lg sticky top-0 z-10">
@@ -16,7 +18,7 @@
 				alt="brand logo"
 			/>
 		</a>
-		<button aria-label="search"
+		<button aria-label="search" on:click={() => (showSearchbar = true)}
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-7 lg:h-9"
@@ -50,7 +52,9 @@
 		>
 	</div>
 </nav>
-
+{#if showSearchbar}
+	<Searchbar on:closeSearchbar={() => (showSearchbar = false)} />
+{/if}
 {#if showCart}
 	<Cart on:closeCart={() => (showCart = false)} />
 {/if}

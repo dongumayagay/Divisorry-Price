@@ -45,3 +45,11 @@
 	on:click={() => dispatch('closeCart')}
 	class="z-10 fixed inset-0 bg-black/50 "
 />
+
+<svelte:window
+	on:keydown={(event) => {
+		if (event.key == 'Escape') {
+			dispatch('closeCart');
+		}
+	}}
+/>
