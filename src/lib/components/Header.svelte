@@ -3,7 +3,7 @@
 </script>
 
 <header
-  class="bg-cover bg-center bg-no-repeat"
+  class="bg-cover bg-center bg-no-repeat bg-fixed bg-"
   style="background-image: url({Divisoria});"
 >
   <div

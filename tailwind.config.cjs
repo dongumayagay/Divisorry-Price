@@ -1,8 +1,20 @@
+const colors = require("tailwindcss/colors");
+
 const config = {
   mode: "jit",
   purge: ["./src/**/*.{html,js,svelte,ts}"],
 
   theme: {
+    colors: {
+      transparent: "transparent",
+      current: "currentColor",
+      black: colors.black,
+      white: colors.white,
+      gray: colors.gray,
+      blue: colors.sky,
+      red: colors.red,
+      yellow: colors.amber,
+    },
     container: {
       screens: {
         sm: "640px",
