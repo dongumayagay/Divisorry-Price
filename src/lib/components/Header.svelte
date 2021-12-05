@@ -3,11 +3,11 @@
 </script>
 
 <header
-  class="bg-cover bg-center bg-no-repeat bg-fixed bg-"
+  class="bg-cover bg-center bg-no-repeat bg-fixed"
   style="background-image: url({Divisoria});"
 >
   <div
-    class=" py-20 sm:py-40 md:py-48 bg-gradient-to-t from-black/90 via-black/70 to-black/30 flex items-center justify-center overflow-hidden"
+    class=" py-20 sm:py-40 md:py-48 bg-gradient-to-t from-gray-900/95 via-gray-900/70 to-gray-900/30 flex items-center justify-center overflow-hidden"
   >
     <article
       class="flex items-center flex-col space-y-5 transform -rotate-2 justify-center text-center"

@@ -14,9 +14,9 @@
     <a
       href="/"
       transition:scale
-      class="bg-black/95 text-white/95 text-lg lg:text-xl py-3 px-4 mb-10 hover:bg-gray-800
-			transition-all duration-300 ease-in-out capitalize tracking-wider
-			">{category.name}</a
+      class="bg-gray-900 text-gray-200 text-lg lg:text-xl py-3 px-4 mb-10 rounded hover:bg-gray-700
+			active:translate-y-1 transition-colors duration-300 ease-in-out tracking-wider capitalize"
+      >{category.name}</a
     >
   {/if}
 </section>
