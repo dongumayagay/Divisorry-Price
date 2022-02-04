@@ -3,7 +3,7 @@
 	export let categories = [
 		{ name: "men's clothing", image: '/categories/mens.jpg' },
 		{ name: "women's clothing", image: '/categories/womens.jpg' },
-		{ name: 'jewelry', image: '/categories/jewelry.jpg' },
+		{ name: 'jewelery', image: '/categories/jewelry.jpg' },
 		{ name: 'electronics', image: '/categories/electronics.jpg' }
 	];
 </script>
