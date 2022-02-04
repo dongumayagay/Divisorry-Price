@@ -6,7 +6,7 @@
 
 <div class="min-h-screen flex flex-col ">
 	<Navbar />
-	<main class="bg-neutral-200">
+	<main class="bg-neutral-100">
 		<slot />
 	</main>
 	<Footer />

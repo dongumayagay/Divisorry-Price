@@ -8,10 +8,7 @@
 	];
 </script>
 
-<h1 class="container mx-auto text-center my-8 text-3xl lg:text-4xl 2xl:text-5xl tracking-wider">
-	Shop by Categories
-</h1>
-<div class="flex overflow-x-auto mb-16">
+<div class="flex overflow-x-auto mt-8 mb-14">
 	<div class="flex flex-nowrap px-10 lg:mx-auto space-x-8 ">
 		{#each categories as category}
 			<CatergoryCard {category} />
@@ -20,11 +17,11 @@
 		{/each}
 	</div>
 </div>
-<div class="container text-center mx-auto px-10 my-8 mb-20">
-	<button
-		href="/"
-		class="bg-neutral-900 text-neutral-200 text-lg lg:text-xl py-4 px-4 rounded hover:bg-neutral-700 active:translate-y-1 transition-colors duration-300 ease-in-out tracking-wider capitalize"
-		>Shop All Products</button
+<div class="container text-center mx-auto px-10 my-8 mb-16">
+	<a
+		href="category/all products"
+		class="bg-neutral-900 text-neutral-200 text-lg lg:text-xl py-4 px-6 rounded-full hover:bg-neutral-800 hover:text-yellow-500 active:translate-y-1 transition-colors duration-300 ease-in-out tracking-wider capitalize font-semibold"
+		>Shop All Products</a
 	>
 </div>
 

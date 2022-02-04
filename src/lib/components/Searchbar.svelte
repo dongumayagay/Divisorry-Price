@@ -11,7 +11,7 @@
 		transition:fly={{ opacity: 1, y: -100, duration: 200 }}
 		autofocus
 		placeholder="Search..."
-		class=" px-6 py-4 my-8 text-2xl container mx-8 rounded-lg shadow-2xl"
+		class=" px-6 py-3 my-8 text-2xl container mx-8 rounded-full shadow-2xl"
 	/>
 </div>
 
