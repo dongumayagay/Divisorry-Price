@@ -7,6 +7,7 @@ Products used in the project is from [Fake Store API](https://fakestoreapi.com/)
 
 Since I'm not good at design. here is some sites that i looked up for some design inspiration.
 
+- mkbhd.com
 - peakdesign.com
 - wanrdrd.com
 - shopmoment.com
@@ -14,21 +15,36 @@ Since I'm not good at design. here is some sites that i looked up for some desig
 - shopmrbeast.com
 - represent.com/store/pewdiepie
 
+## Requirements
+
+- Node.js
+
+## Setup
+
+clone or download the repo
+then install the dependencies with your package manager of choice ( npm, yarn, pnpm )
+
+```
+# for npm
+npm install
+
+# for yarn
+yarn
+
+# for pnpm
+pnpm install
+
+```
+
 ## Developing
 
+start a development server:
+
 ```bash
-# run local web server
 npm run dev
 
-# open the app in a new browser tab
+# or start the server and open the app in a new browser tab
 npm run dev -- --open
-
-#expose to local network
-npm run dev -- --host
-
-#for opening the app and exposing it in local network
-npm run dev -- --open --host
-
 ```
 
 ## Building
