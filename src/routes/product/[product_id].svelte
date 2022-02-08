@@ -13,7 +13,7 @@
 </script>
 
 <script>
-	// import { cart } from '$lib/stores';
+	import { showCart, cart } from '$lib/stores';
 
 	export let item;
 
@@ -25,13 +25,16 @@
 			id: item.id,
 			name: item.title,
 			price: item.price,
+			image: item.image,
 			quantity
 		};
-		// cart = [...cart, cartItem];
+
+		$showCart = true;
+		$cart = [...$cart, cartItem];
 	}
 </script>
 
-<div class="flex-1 flex flex-col justify-center items-center py-8">
+<div class="flex-1 flex flex-col justify-center items-center py-8 px-4">
 	<main class="container grid grid-cols-1 md:grid-cols-2">
 		<section
 			style=" background-image:url({item.image});"
@@ -40,20 +43,22 @@
 		<section class="p-4 space-y-4 flex flex-col">
 			<h1 class=" text-4xl font-bold">{item.title}</h1>
 			<h2 class=" text-xl font-semibold">₱{(item.price * 50).toFixed(2)}</h2>
-			<label class="flex items-center space-x-1">
-				<span class="font-semibold text-lg mr-4"> Quantity </span>
-				<button on:click={() => (quantity += 1)} class="aspect-square w-8">
-					<img src="/ui/minus.svg" alt="" />
-				</button>
-				<input
-					bind:value={quantity}
-					type="number"
-					class="rounded-full appearance-none w-16 h-10 border-2 text-right font-bold text-lg"
-				/>
-				<button on:click={() => (quantity += 1)} class="aspect-square w-8">
-					<img src="/ui/plus.svg" alt="" />
-				</button>
-			</label>
+			<div class="flex items-center space-x-1 justify-evenly ">
+				<span class="font-semibold text-2xl mr-4 text-center"> Quantity </span>
+				<span class="flex items-center space-x-1">
+					<button on:click={() => (quantity += 1)} class="aspect-square w-8">
+						<img src="/ui/minus.svg" alt="" />
+					</button>
+					<input
+						bind:value={quantity}
+						type="number"
+						class="rounded-full appearance-none w-16 h-10 border-2 text-right font-bold text-lg"
+					/>
+					<button on:click={() => (quantity += 1)} class="aspect-square w-8">
+						<img src="/ui/plus.svg" alt="" />
+					</button>
+				</span>
+			</div>
 			<button
 				on:click={addToCart}
 				class="bg-neutral-800 rounded-full py-2 text-white font-semibold tracking-wide text-xl ring ring-neutral-800 hover:bg-neutral-500 hover:text-neutral-800 transition"
