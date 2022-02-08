@@ -15,11 +15,14 @@
 	import { goto } from '$app/navigation';
 	import { session } from '$app/stores';
 
+	let firstName = '';
+	let lastName = '';
+	let street = '';
+	let city = '';
+	let province = '';
+
 	let email = '';
 	let password = '';
-	let retypepassword = '';
-
-	// let passDontMatch = false;
 
 	function signup() {
 		$session = {
@@ -30,15 +33,65 @@
 	}
 </script>
 
-<div class=" bg-transparent px-6 pt-16 pb-20">
+<div class="flex-1 flex justify-center items-center">
 	<main
-		class="flex flex-col bg-white border border-neutral-300/75 shadow-xl w-full sm:w-[450px] mx-auto py-12 px-6 rounded-xl"
+		class="flex flex-col bg-white border border-neutral-300/75 shadow-xl w-full sm:w-[450px] py-12 px-6 rounded-xl"
 	>
 		<h1 class="uppercase font-bold tracking-widest text-3xl pb-4 text-center">
 			Create your Account
 		</h1>
-		<form class="flex flex-col" on:submit|preventDefault={signup}>
-			<label class="pb-2">
+		<form class="grid grid-cols-2 gap-x-2" on:submit|preventDefault={signup}>
+			<label class="pb-2 col-span-1">
+				<span class="inline-block text-sm pl-4"> First Name </span>
+				<input
+					required
+					bind:value={firstName}
+					class="w-full rounded-full px-4 text-lg"
+					type="text"
+					placeholder="First name"
+				/>
+			</label>
+			<label class="pb-2 col-span-1">
+				<span class="inline-block text-sm pl-4"> Last name </span>
+				<input
+					required
+					bind:value={lastName}
+					class="w-full rounded-full px-4 text-lg"
+					type="text"
+					placeholder="Last name"
+				/>
+			</label>
+			<label class="pb-2 col-span-2">
+				<span class="inline-block text-sm pl-4"> Street Address</span>
+				<input
+					required
+					bind:value={street}
+					class="w-full rounded-full px-4 text-lg"
+					type="text"
+					placeholder="Street Address"
+				/>
+			</label>
+			<label class="pb-2 col-span-1">
+				<span class="inline-block text-sm pl-4"> City / Municipality </span>
+				<input
+					required
+					bind:value={city}
+					class="w-full rounded-full px-4 text-lg"
+					type="text"
+					placeholder="City or Municipality"
+				/>
+			</label>
+			<label class="pb-2 col-span-1">
+				<span class="inline-block text-sm pl-4">Province </span>
+				<input
+					required
+					bind:value={province}
+					class="w-full rounded-full px-4 text-lg"
+					type="text"
+					placeholder="Province"
+				/>
+			</label>
+			<label class="pb-2 col-span-2">
 				<span class="inline-block text-sm pl-4"> Email </span>
 				<input
 					required
@@ -48,7 +101,7 @@
 					placeholder="Email"
 				/>
 			</label>
-			<label class="pb-2">
+			<label class="pb-6 col-span-2">
 				<span class="inline-block text-sm pl-4"> Password </span>
 				<input
 					required
@@ -58,30 +111,15 @@
 					placeholder="Password"
 				/>
 			</label>
-			<label class="">
-				<span class="inline-block text-sm pl-4"> Re-type Password </span>
-				<input
-					required
-					bind:value={retypepassword}
-					class="w-full rounded-full px-4 text-lg"
-					type="password"
-					placeholder="Re-type Password"
-				/>
-			</label>
-			<p class="text-sm pt-1 pb-2 px-4 text-red-500">
-				&nbsp;
-				{#if password !== retypepassword}
-					Password don't match!
-				{/if}
-			</p>
+
 			<button
-				class="bg-neutral-900 rounded-full px-4 py-3 capitalize tracking-widest text-lg font-medium text-white border-2 border-black hover:text-black hover:bg-neutral-400 transition"
+				class="col-span-2 bg-neutral-900 rounded-full px-4 py-3 capitalize tracking-widest text-lg font-medium text-white border-2 border-black hover:text-black hover:bg-neutral-400 transition"
 				type="submit"
 				>Create my account
 			</button>
 			<a
 				href="/login"
-				class="mx-auto text-center transition pt-4 text-lg text-neutral-600 w-fit border-transparent border-b hover:border-black"
+				class="col-span-2 mx-auto text-center transition pt-4 text-lg text-neutral-600 w-fit border-transparent border-b hover:border-black"
 			>
 				Already have an Account? Login
 			</a>

@@ -29,9 +29,9 @@
 	}
 </script>
 
-<div class=" bg-transparent px-6 pt-16 pb-20">
+<div class="flex-1 flex justify-center items-center">
 	<main
-		class="flex flex-col bg-white border border-neutral-300/75 shadow-xl w-full sm:w-[450px] mx-auto py-12 px-6 rounded-xl"
+		class="flex flex-col bg-white border border-neutral-300/75 shadow-xl w-full sm:w-[450px] py-12 px-6 rounded-xl"
 	>
 		<h1 class="uppercase font-bold tracking-widest text-3xl pb-4 text-center">
 			Login into your Account
