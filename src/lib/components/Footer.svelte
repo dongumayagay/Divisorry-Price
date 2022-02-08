@@ -1,6 +1,6 @@
-<footer class="bg-neutral-900 p-10 mt-auto">
+<footer class="bg-neutral-900 absolute bottom-0 h-[125px] w-full grid place-items-center p-4">
 	<div
-		class="container mx-auto flex flex-col space-y-7 md:space-y-0 md:flex-row-reverse md:justify-between md:px-8 "
+		class="container mx-auto flex flex-col space-y-2 md:space-y-0 md:flex-row-reverse md:justify-between md:px-8 "
 	>
 		<nav class=" text-neutral-300 flex justify-around md:space-x-7">
 			<a sveltekit:prefetch href="/about" class="hover:text-yellow-500 transition-colors">About</a>
