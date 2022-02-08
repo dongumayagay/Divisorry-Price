@@ -14,8 +14,7 @@
 
 <script>
 	// import { cart } from '$lib/stores';
-	import { createEventDispatcher } from 'svelte';
-	const dispatch = createEventDispatcher();
+
 	export let item;
 
 	let quantity = 1;

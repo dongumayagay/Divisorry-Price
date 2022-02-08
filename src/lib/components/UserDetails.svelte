@@ -20,7 +20,7 @@
 		</h1>
 		{#if !collapse}
 			<button
-				transition:scale
+				transition:scale|local
 				on:click={() => (editable = !editable)}
 				class="capitalize bg-neutral-800 text-white px-4 py-2 rounded-full"
 			>
@@ -29,7 +29,10 @@
 		{/if}
 	</header>
 	{#if !collapse}
-		<ul transition:slide class="grid grid-cols-2 gap-x-2 border-2 border-black p-2 rounded-xl">
+		<ul
+			transition:slide|local
+			class="grid grid-cols-2 gap-x-2 border-2 border-black p-2 rounded-xl"
+		>
 			<li class="pb-2 col-span-2 sm:col-span-1 ">
 				<span class="block text-sm pl-4">First name</span>
 				<span
