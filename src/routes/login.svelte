@@ -60,6 +60,7 @@
 				type="submit">login</button
 			>
 			<a
+				sveltekit:prefetch
 				href="/signup"
 				class="mx-auto text-center transition pt-4 text-lg text-neutral-600 w-fit border-transparent border-b hover:border-black"
 			>

@@ -118,6 +118,7 @@
 				>Create my account
 			</button>
 			<a
+				sveltekit:prefetch
 				href="/login"
 				class="col-span-2 mx-auto text-center transition pt-4 text-lg text-neutral-600 w-fit border-transparent border-b hover:border-black"
 			>
