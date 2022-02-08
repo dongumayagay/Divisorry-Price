@@ -1,17 +1,19 @@
 <script context="module">
-	export async function load({ params }) {
-		const slug = params.name;
+	export async function load({ params, fetch }) {
+		const category_name = params.category_name;
 
-		const url =
-			slug === 'all products'
-				? 'https://fakestoreapi.com/products'
-				: 'https://fakestoreapi.com/products/category/' + slug;
+		// const url =
+		// 	category_name === 'all products'
+		// 		? '/api/products'
+		// 		: 'https://fakestoreapi.com/products/category/' + category_name;
 
+		const url = `/api/category/${category_name}`;
 		const res = await fetch(url);
 		const items = await res.json();
+
 		return {
 			props: {
-				categoryName: slug,
+				category_name,
 				items
 			}
 		};
@@ -20,7 +22,7 @@
 
 <script>
 	import ProductCard from '$lib/components/ProductCard.svelte';
-	export let categoryName;
+	export let category_name;
 	export let items;
 
 	function titleCase(str) {
@@ -33,10 +35,10 @@
 </script>
 
 <svelte:head>
-	<title>{titleCase(categoryName)} | Divisorry Price</title>
+	<title>{titleCase(category_name)} | Divisorry Price</title>
 </svelte:head>
 
-<h1 class=" uppercase tracking-wider text-center mt-10 text-3xl font-semibold">{categoryName}</h1>
+<h1 class=" uppercase tracking-wider text-center mt-10 text-3xl font-semibold">{category_name}</h1>
 
 <main class="container mx-auto mt-8 grid sm:grid-cols-2 lg:grid-cols-3">
 	{#each items as item}
