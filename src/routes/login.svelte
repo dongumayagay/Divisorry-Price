@@ -18,8 +18,6 @@
 	let email = '';
 	let password = '';
 
-	console.log($session);
-
 	function login() {
 		$session = {
 			email,
