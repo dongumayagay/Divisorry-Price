@@ -1,10 +1,10 @@
 <script>
 	import CatergoryCard from './CatergoryCard.svelte';
 	export let categories = [
-		{ name: "men's clothing", image: '/categories/mens.jpg' },
-		{ name: "women's clothing", image: '/categories/womens.jpg' },
-		{ name: 'jewelery', image: '/categories/jewelry.jpg' },
-		{ name: 'electronics', image: '/categories/electronics.jpg' }
+		{ name: "men's clothing", image: '/product_images/3.jpg' },
+		{ name: "women's clothing", image: '/product_images/20.jpg' },
+		{ name: 'jewelery', image: '/product_images/6.jpg' },
+		{ name: 'electronics', image: '/product_images/10.jpg' }
 	];
 </script>
 
@@ -19,7 +19,7 @@
 </div>
 <div class="container text-center mx-auto px-10 mt-2 mb-10">
 	<a
-		href="category/all products"
+		href="category/all"
 		class="bg-neutral-900 text-neutral-200 text-lg lg:text-xl py-4 px-6 rounded-full hover:bg-neutral-800 hover:text-yellow-500 active:translate-y-1 transition-colors duration-300 ease-in-out tracking-wider capitalize font-semibold"
 		>Shop All Products</a
 	>
