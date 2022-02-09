@@ -41,7 +41,10 @@
 				</li>
 			{/each}
 		{:else}
-			<div class="flex-1 text-center flex flex-col justify-center items-center space-y-4">
+			<div
+				in:fade={{ delay: 400 }}
+				class="flex-1 text-center flex flex-col justify-center items-center space-y-4"
+			>
 				<h1 class="font-semibold text-3xl">Your cart is empty</h1>
 				<button
 					on:click={closeCart}

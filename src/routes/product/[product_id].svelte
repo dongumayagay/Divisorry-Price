@@ -30,13 +30,12 @@
 				image: item.image,
 				quantity
 			};
-
-			$showCart = true;
 			$cart = [...$cart, cartItem];
 		} else {
 			$cart[index].quantity += quantity;
 			$cart = $cart;
 		}
+		$showCart = true;
 	}
 </script>
 
