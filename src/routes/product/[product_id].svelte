@@ -18,7 +18,7 @@
 	export let item;
 
 	let quantity = 1;
-	$: if (quantity < 1) quantity = 1;
+
 	console.log($cart);
 	function addToCart() {
 		const index = $cart.findIndex((cartitem) => cartitem.id === item.id);
@@ -51,7 +51,7 @@
 			<div class="flex items-center space-x-1 justify-evenly ">
 				<span class="font-semibold text-2xl mr-4 text-center"> Quantity </span>
 				<span class="flex items-center space-x-1">
-					<button on:click={() => (quantity += 1)} class="aspect-square w-8">
+					<button on:click={() => (quantity > 1 ? (quantity -= 1) : 0)} class="aspect-square w-8">
 						<img src="/ui/minus.svg" alt="" />
 					</button>
 					<input
@@ -59,7 +59,7 @@
 						type="number"
 						class="rounded-full appearance-none w-16 h-10 border-2 text-right font-bold text-lg"
 					/>
-					<button on:click={() => (quantity += 1)} class="aspect-square w-8">
+					<button on:click={() => (quantity < 99 ? (quantity += 1) : 0)} class="aspect-square w-8">
 						<img src="/ui/plus.svg" alt="" />
 					</button>
 				</span>

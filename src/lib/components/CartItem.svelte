@@ -34,7 +34,10 @@
 					type="number"
 					class="rounded-full appearance-none w-full h-10 border-2 text-right font-bold text-lg"
 				/>
-				<button on:click={() => (item.quantity += 1)} class="aspect-square w-20">
+				<button
+					on:click={() => (item.quantity < 99 ? (item.quantity += 1) : 0)}
+					class="aspect-square w-20"
+				>
 					<img src="/ui/plus.svg" alt="" />
 				</button>
 			</span>
