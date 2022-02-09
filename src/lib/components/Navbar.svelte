@@ -1,12 +1,24 @@
 <script>
 	import { showCart } from '$lib/stores';
 	import Searchbar from './Searchbar.svelte';
+	import { goto } from '$app/navigation';
 
 	const logo = '/logo.webp';
 	let showSearchbar = false;
+	let innerWidth;
+
+	function openCart() {
+		if (innerWidth < 640) {
+			goto('/cart');
+		} else {
+			$showCart = true;
+		}
+	}
 </script>
 
-<nav class="max-w-full py-1 bg-neutral-800 shadow-lg text-neutral-300  sticky top-0 z-10">
+<svelte:window bind:innerWidth />
+
+<nav class="max-w-full py-1 bg-neutral-800 shadow-lg  text-neutral-300  sticky top-0 z-10">
 	<div
 		aria-label="Storefront"
 		class="container flex justify-between mx-auto px-6 items-center space-x-5 lg:space-x-8"
@@ -48,7 +60,7 @@
 				/>
 			</svg></button
 		> -->
-		<button aria-label="show cart" on:click={() => ($showCart = true)}
+		<button aria-label="show cart" on:click={openCart}
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-6 lg:h-7 hover:text-yellow-500 transition-colors duration-500 stroke-[1.5] lg:stroke-2"
