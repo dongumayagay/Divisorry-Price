@@ -1,5 +1,6 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 	import { showCart, cart } from '$lib/stores';
 	import CartItem from './CartItem.svelte';
 
@@ -34,8 +35,10 @@
 
 	<main class="flex-1 flex flex-col py-4 overflow-auto mb-20">
 		{#if $cart.length != 0}
-			{#each $cart as item}
-				<CartItem {item} />
+			{#each $cart as item (item.id)}
+				<li animate:flip in:fade out:fly={{ x: 400 }} class=" list-none">
+					<CartItem {item} />
+				</li>
 			{/each}
 		{:else}
 			<div class="flex-1 text-center flex flex-col justify-center items-center space-y-4">

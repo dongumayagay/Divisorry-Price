@@ -1,5 +1,11 @@
 <script>
+	import { cart } from '$lib/stores';
 	export let item;
+
+	function removeItem(id) {
+		console.log('remove ' + id);
+		$cart = $cart.filter((value) => value.id !== id);
+	}
 </script>
 
 <!-- {JSON.stringify(item)} -->
@@ -33,7 +39,10 @@
 				</button>
 			</span>
 		</div>
-		<button class="font-medium text-white bg-neutral-900  px-4 py-2 rounded-full">Remove</button>
+		<button
+			on:click={() => removeItem(item.id)}
+			class="font-medium text-white bg-neutral-900  px-4 py-2 rounded-full">Remove</button
+		>
 	</section>
 </div>
 

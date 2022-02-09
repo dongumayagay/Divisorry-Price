@@ -19,18 +19,24 @@
 
 	let quantity = 1;
 	$: if (quantity < 1) quantity = 1;
-
+	console.log($cart);
 	function addToCart() {
-		const cartItem = {
-			id: item.id,
-			name: item.title,
-			price: item.price,
-			image: item.image,
-			quantity
-		};
+		const index = $cart.findIndex((cartitem) => cartitem.id === item.id);
+		if (index === -1) {
+			const cartItem = {
+				id: item.id,
+				name: item.title,
+				price: item.price,
+				image: item.image,
+				quantity
+			};
 
-		$showCart = true;
-		$cart = [...$cart, cartItem];
+			$showCart = true;
+			$cart = [...$cart, cartItem];
+		} else {
+			$cart[index].quantity += quantity;
+			$cart = $cart;
+		}
 	}
 </script>
 
