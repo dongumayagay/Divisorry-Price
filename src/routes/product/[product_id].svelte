@@ -19,6 +19,14 @@
 
 	let quantity = 1;
 
+	function openCart() {
+		if (innerWidth < 640) {
+			goto('/cart');
+		} else {
+			$showCart = true;
+		}
+	}
+
 	console.log($cart);
 	function addToCart() {
 		const index = $cart.findIndex((cartitem) => cartitem.id === item.id);
@@ -35,7 +43,7 @@
 			$cart[index].quantity += quantity;
 			$cart = $cart;
 		}
-		$showCart = true;
+		openCart();
 	}
 </script>
 
