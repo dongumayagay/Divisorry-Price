@@ -38,7 +38,9 @@
 			>
 		</header>
 
-		<main class="flex-1 flex flex-col py-4 overflow-auto border-4 ">
+		<main
+			class="flex-1 flex flex-col py-4 overflow-y-auto border-4 overflow-x-hidden max-w-full w-[500px]"
+		>
 			{#if $cart.length != 0}
 				{#each $cart as item (item.id)}
 					<li animate:flip in:fade out:fly={{ x: 400 }} class=" list-none">
@@ -46,6 +48,7 @@
 					</li>
 				{/each}
 				<button
+					out:fade
 					on:click|once|stopPropagation|capture={closeCart}
 					class="bg-neutral-900 text-center border-2 border-neutral-900 text-white py-2 px-4 mx-2 rounded-full"
 					>Continue Shopping</button

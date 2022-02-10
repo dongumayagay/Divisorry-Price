@@ -22,25 +22,41 @@
 		<h2 class="text-2xl text-neutral-600">₱{(item.price * 50).toFixed(2)}</h2>
 		<div class="pb-2">
 			<span class="font-medium text-lg text-center"> Quantity </span>
-			<span class="flex items-center justify-center space-x-1">
+			<form on:submit|preventDefault={() => {}} class="flex items-center justify-center space-x-1">
 				<button
-					on:click={() => (item.quantity > 1 ? (item.quantity -= 1) : 0)}
+					type="button"
+					on:click={() => {
+						if (item.quantity > 1) item.quantity -= 1;
+						else item.quantity = 1;
+					}}
 					class="aspect-square w-20"
 				>
 					<img src="/ui/minus.svg" alt="" />
 				</button>
 				<input
+					on:blur={() => {
+						if (item.quantity > 99) item.quantity = 99;
+						else if (item.quantity < 1) item.quantity = 1;
+					}}
 					bind:value={item.quantity}
 					type="number"
+					required
+					min="1"
+					max="99"
 					class="rounded-full appearance-none w-full h-10 border-2 text-right font-bold text-lg"
 				/>
 				<button
-					on:click={() => (item.quantity < 99 ? (item.quantity += 1) : 0)}
+					type="button"
+					on:click={() => {
+						if (item.quantity < 99) item.quantity += 1;
+						else item.quantity = 99;
+					}}
 					class="aspect-square w-20"
 				>
 					<img src="/ui/plus.svg" alt="" />
 				</button>
-			</span>
+				<button type="submit" />
+			</form>
 		</div>
 		<button
 			on:click={() => removeItem(item.id)}

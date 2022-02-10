@@ -43,6 +43,7 @@
 			$cart[index].quantity += quantity;
 			$cart = $cart;
 		}
+		quantity = 1;
 		openCart();
 	}
 </script>
@@ -55,27 +56,46 @@
 			style=" background-image:url({item.image});"
 			class="aspect-[2/3]  bg-contain bg-center bg-no-repeat bg-origin-content w-full"
 		/>
-		<section class="p-4 space-y-4 flex flex-col">
+		<form on:submit|preventDefault={addToCart} class="p-4 space-y-4 flex flex-col">
 			<h1 class=" text-4xl font-bold">{item.title}</h1>
 			<h2 class=" text-xl font-semibold">₱{(item.price * 50).toFixed(2)}</h2>
 			<div class="flex items-center space-x-1 justify-evenly ">
 				<span class="font-semibold text-2xl mr-4 text-center"> Quantity </span>
 				<span class="flex items-center space-x-1">
-					<button on:click={() => (quantity > 1 ? (quantity -= 1) : 0)} class="aspect-square w-8">
+					<button
+						type="button"
+						on:click={() => {
+							if (quantity > 1) quantity -= 1;
+						}}
+						class="aspect-square w-8"
+					>
 						<img src="/ui/minus.svg" alt="" />
 					</button>
 					<input
+						on:blur={() => {
+							if (quantity > 99) quantity = 99;
+							else if (quantity < 1) quantity = 1;
+						}}
 						bind:value={quantity}
 						type="number"
+						required
+						min="1"
+						max="99"
 						class="rounded-full appearance-none w-16 h-10 border-2 text-right font-bold text-lg"
 					/>
-					<button on:click={() => (quantity < 99 ? (quantity += 1) : 0)} class="aspect-square w-8">
+					<button
+						type="button"
+						on:click={() => {
+							if (quantity < 99) quantity += 1;
+						}}
+						class="aspect-square w-8"
+					>
 						<img src="/ui/plus.svg" alt="" />
 					</button>
 				</span>
 			</div>
 			<button
-				on:click={addToCart}
+				type="submit"
 				class="bg-neutral-800 rounded-full py-2 text-white font-semibold tracking-wide text-xl"
 				>Add to Cart</button
 			>
@@ -83,7 +103,7 @@
 				<h2 class="font-bold text-xl pb-2">Product Information</h2>
 				<p class="pl-4">{item.description}</p>
 			</article>
-		</section>
+		</form>
 	</main>
 </div>
 
