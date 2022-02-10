@@ -66,7 +66,7 @@
 			</div>
 			<button
 				on:click={addToCart}
-				class="bg-neutral-800 rounded-full py-2 text-white font-semibold tracking-wide text-xl ring ring-neutral-800 hover:bg-neutral-500 hover:text-neutral-800 transition"
+				class="bg-neutral-800 rounded-full py-2 text-white font-semibold tracking-wide text-xl"
 				>Add to Cart</button
 			>
 			<article>

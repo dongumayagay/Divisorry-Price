@@ -1,4 +1,5 @@
 <script context="module">
+	export const prerender = true;
 	import { browser } from '$app/env';
 
 	export async function load({ session }) {
