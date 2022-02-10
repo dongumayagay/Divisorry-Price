@@ -1,4 +1,4 @@
-<script context="module">
+<!-- <script context="module">
 	export async function load({ params, fetch }) {
 		const category_name = params.category_name;
 
@@ -7,9 +7,9 @@
 		// 		? '/api/products'
 		// 		: 'https://fakestoreapi.com/products/category/' + category_name;
 
-		const url = `/api/category/${category_name}`;
-		const res = await fetch(url);
-		const items = await res.json();
+		// const url = `/api/category/${category_name}`;
+		// const res = await fetch(url);
+		// const items = await res.json();
 
 		return {
 			props: {
@@ -18,12 +18,12 @@
 			}
 		};
 	}
-</script>
-
+</script> -->
 <script>
 	import ProductCard from '$lib/components/ProductCard.svelte';
-	export let category_name;
-	export let items;
+	import { page } from '$app/stores';
+	const category_name = $page.params.category_name;
+	export let products;
 
 	function titleCase(str) {
 		var splitStr = str.toLowerCase().split(' ');
@@ -41,7 +41,7 @@
 <h1 class=" uppercase tracking-wider text-center mt-10 text-3xl font-semibold">{category_name}</h1>
 
 <main class="container mx-auto mt-8 grid sm:grid-cols-2 lg:grid-cols-3">
-	{#each items as item}
-		<ProductCard {item} />
+	{#each products as product}
+		<ProductCard {product} />
 	{/each}
 </main>

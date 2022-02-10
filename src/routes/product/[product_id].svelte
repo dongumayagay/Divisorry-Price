@@ -1,4 +1,4 @@
-<script context="module">
+<!-- <script context="module">
 	export async function load({ params, fetch }) {
 		const product_id = params.product_id;
 		const url = `/api/product/${product_id}`;
@@ -10,12 +10,12 @@
 			}
 		};
 	}
-</script>
-
+</script> -->
 <script>
 	import { showCart, cart } from '$lib/stores';
 	import { goto } from '$app/navigation';
-	export let item;
+	export let product;
+	// export let product;
 	let innerWidth;
 	let quantity = 1;
 
@@ -29,13 +29,13 @@
 	}
 
 	function addToCart() {
-		const index = $cart.findIndex((cartitem) => cartitem.id === item.id);
+		const index = $cart.findIndex((cartitem) => cartitem.id === product.id);
 		if (index === -1) {
 			const cartItem = {
-				id: item.id,
-				name: item.title,
-				price: item.price,
-				image: item.image,
+				id: product.id,
+				name: product.title,
+				price: product.price,
+				image: product.image,
 				quantity
 			};
 			$cart = [...$cart, cartItem];
@@ -53,12 +53,12 @@
 <div class="flex-1 flex flex-col justify-center items-center py-8 px-4">
 	<main class="container grid grid-cols-1 md:grid-cols-2">
 		<section
-			style=" background-image:url({item.image});"
+			style=" background-image:url({product.image});"
 			class="aspect-[2/3]  bg-contain bg-center bg-no-repeat bg-origin-content w-full"
 		/>
 		<form on:submit|preventDefault={addToCart} class="p-4 space-y-4 flex flex-col">
-			<h1 class=" text-4xl font-bold">{item.title}</h1>
-			<h2 class=" text-xl font-semibold">₱{(item.price * 50).toFixed(2)}</h2>
+			<h1 class=" text-4xl font-bold">{product.title}</h1>
+			<h2 class=" text-xl font-semibold">₱{(product.price * 50).toFixed(2)}</h2>
 			<div class="flex items-center space-x-1 justify-evenly ">
 				<span class="font-semibold text-2xl mr-4 text-center"> Quantity </span>
 				<span class="flex items-center space-x-1">
@@ -101,7 +101,7 @@
 			>
 			<article>
 				<h2 class="font-bold text-xl pb-2">Product Information</h2>
-				<p class="pl-4">{item.description}</p>
+				<p class="pl-4">{product.description}</p>
 			</article>
 		</form>
 	</main>
