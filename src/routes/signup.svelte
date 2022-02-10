@@ -1,12 +1,11 @@
 <script context="module">
-	export const prerender = true;
 	import { browser } from '$app/env';
-
-	export async function load({ session }) {
+	import { auth } from '$lib/firebase';
+	import { session } from '$lib/stores';
+	import { get } from 'svelte/store';
+	export async function load() {
 		if (browser) {
-			if (Object.keys(session).length !== 0) {
-				return { status: 300, redirect: '/account' };
-			}
+			if (get(session)) return { status: 300, redirect: '/account' };
 		}
 		return {};
 	}
@@ -14,7 +13,7 @@
 
 <script>
 	import { goto } from '$app/navigation';
-	import { session } from '$app/stores';
+	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 
 	let firstName = '';
 	let lastName = '';
@@ -25,12 +24,15 @@
 	let email = '';
 	let password = '';
 
-	function signup() {
-		$session = {
-			email,
-			password
-		};
-		goto('/account');
+	async function signup() {
+		try {
+			$session = await createUserWithEmailAndPassword(auth, email, password);
+			await updateProfile(auth.currentUser, { displayName: firstName });
+			goto('/account');
+		} catch (error) {
+			alert(error.mesage);
+			console.log(error);
+		}
 	}
 </script>
 

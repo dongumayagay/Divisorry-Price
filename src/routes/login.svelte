@@ -1,30 +1,32 @@
 <script context="module">
-	export const prerender = true;
 	import { browser } from '$app/env';
-
-	export async function load({ session }) {
+	import { auth } from '$lib/firebase';
+	import { session } from '$lib/stores';
+	import { get } from 'svelte/store';
+	export async function load() {
 		if (browser) {
-			if (Object.keys(session).length !== 0) {
-				return { status: 300, redirect: '/account' };
-			}
+			if (get(session)) return { status: 300, redirect: '/account' };
 		}
 		return {};
 	}
 </script>
 
 <script>
+	import { signInWithEmailAndPassword } from 'firebase/auth';
 	import { goto } from '$app/navigation';
-	import { session } from '$app/stores';
 
 	let email = '';
 	let password = '';
 
-	function login() {
-		$session = {
-			email,
-			password
-		};
-		goto('/account');
+	async function login() {
+		try {
+			$session = await signInWithEmailAndPassword(auth, email, password);
+			goto('/account');
+		} catch (error) {
+			console.log(error.code);
+			if ((error.code = 'auth/user-not-found'))
+				alert("Error : Account doesn't exist, try to Create one.");
+		}
 	}
 </script>
 

@@ -1,27 +1,35 @@
 <script context="module">
 	import { browser } from '$app/env';
-
-	export async function load({ session }) {
+	import { auth } from '$lib/firebase';
+	import { session } from '$lib/stores';
+	import { get } from 'svelte/store';
+	export async function load() {
+		console.log(get(session));
 		if (browser) {
-			if (Object.keys(session).length === 0) {
-				return { status: 300, redirect: '/login' };
-			}
+			if (!get(session)) return { status: 300, redirect: '/login' };
 		}
 		return {};
 	}
 </script>
 
 <script>
-	import { session } from '$app/stores';
 	import YourOrders from '$lib/components/YourOrders.svelte';
 	import UserDetails from '$lib/components/UserDetails.svelte';
-	function logout() {
-		$session = {};
-		goto('/account');
+	import { goto } from '$app/navigation';
+	import { signOut } from 'firebase/auth';
+
+	async function logout() {
+		try {
+			await signOut(auth);
+			goto('/login');
+		} catch (error) {
+			console.log(error.message);
+			alert(error.message);
+		}
 	}
 
 	let userDetails = {
-		firstName: 'placeholder_firstName',
+		firstName: auth.currentUser.displayName,
 		lastName: 'placeholder_lastName',
 		street: 'placeholder_street',
 		city: 'placeholder_city',
@@ -36,7 +44,6 @@
 			date: new Date().toUTCString()
 		}
 	];
-	// orders = [];
 </script>
 
 <main class="container mx-auto py-8 px-4 space-y-4">
@@ -47,7 +54,7 @@
 		>
 	</header>
 	<h1 class="text-xl sm:text-3xl py-4 text-center">
-		Kamusta suki, <span class="capitalize">{userDetails.firstName}!</span>
+		Kamusta Suking, <span class="capitalize">{userDetails.firstName}!</span>
 	</h1>
 
 	<UserDetails {userDetails} />
