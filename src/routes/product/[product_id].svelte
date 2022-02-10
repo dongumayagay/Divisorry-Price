@@ -14,12 +14,13 @@
 
 <script>
 	import { showCart, cart } from '$lib/stores';
-
+	import { goto } from '$app/navigation';
 	export let item;
-
+	let innerWidth;
 	let quantity = 1;
 
 	function openCart() {
+		console.log('triggered open cart');
 		if (innerWidth < 640) {
 			goto('/cart');
 		} else {
@@ -27,7 +28,6 @@
 		}
 	}
 
-	console.log($cart);
 	function addToCart() {
 		const index = $cart.findIndex((cartitem) => cartitem.id === item.id);
 		if (index === -1) {
@@ -46,6 +46,8 @@
 		openCart();
 	}
 </script>
+
+<svelte:window bind:innerWidth />
 
 <div class="flex-1 flex flex-col justify-center items-center py-8 px-4">
 	<main class="container grid grid-cols-1 md:grid-cols-2">
