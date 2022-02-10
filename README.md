@@ -3,17 +3,16 @@
 Ecommerce Project that uses [SvelteKit](https://kit.svelte.dev/) and [Tailwind CSS](https://tailwindcss.com/)  
 Products used in the project is from [Fake Store API](https://fakestoreapi.com/)
 
-## Design insipiration
+## Design insipirations
 
 Since I'm not good at design. here is some sites that i looked up for some design inspiration.
 
-- mkbhd.com
-- peakdesign.com
-- wanrdrd.com
-- shopmoment.com
-- lttstore.com
-- shopmrbeast.com
-- represent.com/store/pewdiepie
+- [Linus Tech Tips Store](https://www.lttstore.com/)
+- [MKBHD](https://mkbhd.com)
+- [MrBeast | Official Store](https://shopmrbeast.com/)
+- [PewDiePie // Store](https://represent.com/store/pewdiepie)
+- [Peak Design](https://www.peakdesign.com/)
+- [Wandrd](https://wandrd-pacific.com/)
 
 ## Requirements
 
