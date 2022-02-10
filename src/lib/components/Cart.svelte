@@ -3,17 +3,22 @@
 	import { flip } from 'svelte/animate';
 	import { showCart, cart } from '$lib/stores';
 	import CartItem from './CartItem.svelte';
-	let innerWidth;
+	import { page } from '$app/stores';
+
 	function closeCart() {
-		if (innerWidth < 640) {
-			history.go(-1);
+		if ($page.url.pathname === '/cart') {
+			history.back();
 		} else {
 			$showCart = false;
 		}
 	}
 </script>
 
-<div on:click|self={closeCart} transition:fade={{ duration: 200 }} class="z-10 fixed inset-0  ">
+<div
+	on:click|self={closeCart}
+	transition:fade={{ duration: 200 }}
+	class="z-10 fixed inset-0 bg-black/70 "
+>
 	<aside
 		transition:fly={{ opacity: 1, x: 500 }}
 		class="flex flex-col outline-8 bg-white h-full max-w-full w-[500px] ml-auto z-20"
@@ -82,7 +87,6 @@
 </div>
 
 <svelte:window
-	bind:innerWidth
 	on:keydown={(event) => {
 		if (event.key == 'Escape') {
 			closeCart();
