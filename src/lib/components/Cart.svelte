@@ -1,9 +1,17 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
-	import { showCart, cart } from '$lib/stores';
+	import { showCart, cart, total } from '$lib/stores';
 	import CartItem from './CartItem.svelte';
 	import { page } from '$app/stores';
+	import { formatCurrency } from '$lib/utils';
+	import { tweened } from 'svelte/motion';
+	import { cubicInOut } from 'svelte/easing';
+
+	const display_total = tweened($total, {
+		easing: cubicInOut
+	});
+	$: display_total.set($total);
 
 	function closeCart() {
 		if ($page.url.pathname === '/cart') {
@@ -77,7 +85,9 @@
 		>
 			<div class="col-span-2">
 				<span class="block text-sm">Total:</span>
-				<span class="pl-4 text-xl">₱{(0).toFixed(2)}</span>
+				<span class="pl-4 text-xl font-medium tracking-wider"
+					>₱{formatCurrency($display_total)}</span
+				>
 			</div>
 			<div class="col-span-1 grid place-content-center">
 				<button class="bg-neutral-900 text-white py-2 px-4 rounded-full text-lg">Checkout</button>

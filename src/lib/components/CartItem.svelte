@@ -3,12 +3,20 @@
 	export let item;
 
 	function removeItem(id) {
-		console.log('remove ' + id);
 		$cart = $cart.filter((value) => value.id !== id);
 	}
-</script>
 
-<!-- {JSON.stringify(item)} -->
+	function saveCart() {
+		if (item.quantity > 99) item.quantity = 99;
+		else if (item.quantity < 1) item.quantity = 1;
+		$cart = [...$cart];
+	}
+
+	function addqty(toadd) {
+		item.quantity += toadd;
+		saveCart();
+	}
+</script>
 
 <div
 	class="grid grid-cols-2 gap-x-2 border bg-neutral-100 border-black p-2 rounded-xl mb-4 mx-2.5 shadow-lg"
@@ -23,20 +31,13 @@
 		<div class="pb-2">
 			<span class="font-medium text-lg text-center"> Quantity </span>
 			<form on:submit|preventDefault={() => {}} class="flex items-center justify-center space-x-1">
-				<button
-					type="button"
-					on:click={() => {
-						if (item.quantity > 1) item.quantity -= 1;
-						else item.quantity = 1;
-					}}
-					class="aspect-square w-20"
-				>
+				<!-- on:mouseleave={saveCart} -->
+				<button type="button" on:click={() => addqty(-1)} class="aspect-square w-20">
 					<img src="/ui/minus.svg" alt="" />
 				</button>
 				<input
 					on:blur={() => {
-						if (item.quantity > 99) item.quantity = 99;
-						else if (item.quantity < 1) item.quantity = 1;
+						saveCart();
 					}}
 					bind:value={item.quantity}
 					type="number"
@@ -45,14 +46,8 @@
 					max="99"
 					class="rounded-full appearance-none w-full h-10 border-2 text-right font-bold text-lg"
 				/>
-				<button
-					type="button"
-					on:click={() => {
-						if (item.quantity < 99) item.quantity += 1;
-						else item.quantity = 99;
-					}}
-					class="aspect-square w-20"
-				>
+				<!-- on:mouseleave={saveCart} -->
+				<button type="button" on:click={() => addqty(1)} class="aspect-square w-20">
 					<img src="/ui/plus.svg" alt="" />
 				</button>
 				<button type="submit" />
