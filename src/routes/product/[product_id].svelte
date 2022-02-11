@@ -15,7 +15,7 @@
 	import { showCart, cart } from '$lib/stores';
 	import { goto } from '$app/navigation';
 	export let product;
-	// export let product;
+
 	let innerWidth;
 	let quantity = 1;
 

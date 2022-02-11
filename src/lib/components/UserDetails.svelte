@@ -70,7 +70,7 @@
 					class:border-black={editable}
 					contenteditable={editable}
 				>
-					{userDetails.firstName}
+					{userDetails.city}
 				</span>
 			</li>
 			<li class="pb-2 col-span-2 sm:col-span-1 ">
