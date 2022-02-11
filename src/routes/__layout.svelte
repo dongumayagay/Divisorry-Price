@@ -3,6 +3,7 @@
 	import { auth } from '$lib/firebase';
 	import { onAuthStateChanged } from 'firebase/auth';
 	import { session } from '$lib/stores';
+
 	export async function load() {
 		if (browser) onAuthStateChanged(auth, (user) => session.set(user));
 		return {};
@@ -15,6 +16,7 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Cart from '$lib/components/Cart.svelte';
 	import { showCart } from '$lib/stores';
+	// import { navigating } from '$app/stores';
 </script>
 
 <div class="pb-[125px] relative min-h-screen h-full flex flex-col bg-neutral-50 ">
@@ -25,3 +27,7 @@
 {#if $showCart}
 	<Cart />
 {/if}
+<!-- {#if $navigating}
+	<div class="fixed inset-0 h-screen z-50 bg-black/50">
+	</div>
+{/if} -->

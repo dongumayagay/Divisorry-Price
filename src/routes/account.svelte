@@ -4,7 +4,6 @@
 	import { session } from '$lib/stores';
 	import { get } from 'svelte/store';
 	export async function load() {
-		console.log(get(session));
 		if (browser) {
 			if (!get(session)) return { status: 300, redirect: '/login' };
 		}
