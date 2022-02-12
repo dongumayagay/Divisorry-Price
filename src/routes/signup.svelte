@@ -1,6 +1,6 @@
 <script context="module">
 	import { browser } from '$app/env';
-	import { auth } from '$lib/firebase';
+	import { auth, db } from '$lib/firebase';
 	import { session } from '$lib/stores';
 	import { get } from 'svelte/store';
 	export async function load() {
@@ -16,24 +16,26 @@
 	import { formatErrorCode } from '$lib/utils';
 	import { goto } from '$app/navigation';
 	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+	import { doc, setDoc } from 'firebase/firestore';
 
-	let firstName = '';
-	let lastName = '';
-	let street = '';
-	let city = '';
-	let province = '';
-
-	let email = '';
-	let password = '';
-
-	async function signup() {
+	async function submitHandler(event) {
+		const form = event.target;
+		const formData = new FormData(form);
+		const data = {};
+		for (let field of formData) {
+			const [key, value] = field;
+			data[key] = value;
+		}
 		try {
-			$session = await createUserWithEmailAndPassword(auth, email, password);
-			await updateProfile(auth.currentUser, { displayName: firstName });
+			$session = await createUserWithEmailAndPassword(auth, data.email, data.password);
+			delete data.email;
+			delete data.password;
+			await setDoc(doc(db, 'userInfo', auth.currentUser.uid), data);
+			form.reset();
 			goto('/account');
 		} catch (error) {
-			console.log(error.code);
-			code = alert(formatErrorCode(error.code));
+			console.log(error);
+			alert(formatErrorCode(error.code));
 		}
 	}
 </script>
@@ -45,12 +47,12 @@
 		<h1 class="uppercase font-bold tracking-widest text-3xl pb-4 text-center">
 			Create your Account
 		</h1>
-		<form class="grid grid-cols-2 gap-x-2" on:submit|preventDefault={signup}>
+		<form class="grid grid-cols-2 gap-x-2" on:submit|preventDefault={submitHandler}>
 			<label class="pb-2 col-span-1">
 				<span class="inline-block text-sm pl-4"> First Name </span>
 				<input
 					required
-					bind:value={firstName}
+					name="firstName"
 					class="w-full rounded-full px-4 text-lg"
 					type="text"
 					placeholder="First name"
@@ -60,7 +62,7 @@
 				<span class="inline-block text-sm pl-4"> Last name </span>
 				<input
 					required
-					bind:value={lastName}
+					name="lastName"
 					class="w-full rounded-full px-4 text-lg"
 					type="text"
 					placeholder="Last name"
@@ -70,7 +72,7 @@
 				<span class="inline-block text-sm pl-4"> Street Address</span>
 				<input
 					required
-					bind:value={street}
+					name="street"
 					class="w-full rounded-full px-4 text-lg"
 					type="text"
 					placeholder="Street Address"
@@ -80,7 +82,7 @@
 				<span class="inline-block text-sm pl-4"> City / Municipality </span>
 				<input
 					required
-					bind:value={city}
+					name="city"
 					class="w-full rounded-full px-4 text-lg"
 					type="text"
 					placeholder="City or Municipality"
@@ -90,7 +92,7 @@
 				<span class="inline-block text-sm pl-4">Province </span>
 				<input
 					required
-					bind:value={province}
+					name="province"
 					class="w-full rounded-full px-4 text-lg"
 					type="text"
 					placeholder="Province"
@@ -100,7 +102,7 @@
 				<span class="inline-block text-sm pl-4"> Email </span>
 				<input
 					required
-					bind:value={email}
+					name="email"
 					class="w-full rounded-full px-4 text-lg"
 					type="email"
 					placeholder="Email"
@@ -110,7 +112,7 @@
 				<span class="inline-block text-sm pl-4"> Password </span>
 				<input
 					required
-					bind:value={password}
+					name="password"
 					class="w-full rounded-full px-4 text-lg"
 					type="password"
 					placeholder="Password"

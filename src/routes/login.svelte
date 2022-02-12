@@ -17,12 +17,16 @@
 	import { signInWithEmailAndPassword } from 'firebase/auth';
 	import { goto } from '$app/navigation';
 
-	let email = '';
-	let password = '';
-
-	async function login() {
+	async function submitHandler(event) {
+		const form = event.target;
+		const formData = new FormData(form);
+		const data = {};
+		for (let field of formData) {
+			const [key, value] = field;
+			data[key] = value;
+		}
 		try {
-			$session = await signInWithEmailAndPassword(auth, email, password);
+			$session = await signInWithEmailAndPassword(auth, data.email, data.password);
 			goto('/account');
 		} catch (error) {
 			console.log(error.code);
@@ -38,12 +42,12 @@
 		<h1 class="uppercase font-bold tracking-widest text-3xl pb-4 text-center">
 			Login into your Account
 		</h1>
-		<form class="flex flex-col" on:submit|preventDefault={login}>
+		<form class="flex flex-col" on:submit|preventDefault={submitHandler}>
 			<label class="pb-2">
 				<span class="inline-block text-sm pl-4"> Email </span>
 				<input
 					required
-					bind:value={email}
+					name="email"
 					class="w-full rounded-full px-4 text-lg"
 					type="email"
 					placeholder="Email"
@@ -53,7 +57,7 @@
 				<span class="inline-block text-sm pl-4"> Password </span>
 				<input
 					required
-					bind:value={password}
+					name="password"
 					class="w-full rounded-full px-4 text-lg"
 					type="password"
 					placeholder="Password"
