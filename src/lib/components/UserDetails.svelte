@@ -80,7 +80,7 @@
 					class:border-black={editable}
 					contenteditable={editable}
 				>
-					{userDetails.lastName}
+					{userDetails.province}
 				</span>
 			</li>
 		</ul>

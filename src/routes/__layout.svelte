@@ -5,7 +5,9 @@
 	import { session } from '$lib/stores';
 
 	export async function load() {
-		if (browser) onAuthStateChanged(auth, (user) => session.set(user));
+		if (browser) {
+			onAuthStateChanged(auth, (user) => session.set(user));
+		}
 		return {};
 	}
 </script>
@@ -16,7 +18,6 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import Cart from '$lib/components/Cart.svelte';
 	import { showCart } from '$lib/stores';
-	// import { navigating } from '$app/stores';
 </script>
 
 <div class="pb-[125px] relative min-h-screen h-full flex flex-col bg-neutral-50 ">
