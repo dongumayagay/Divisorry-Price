@@ -1,4 +1,5 @@
 <script context="module">
+	export const prerender = true;
 	import { browser } from '$app/env';
 	import { auth, db } from '$lib/firebase';
 	import { session } from '$lib/stores';
@@ -17,6 +18,7 @@
 	import { goto } from '$app/navigation';
 	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 	import { doc, setDoc } from 'firebase/firestore';
+	import { prerender } from './contact.svelte';
 
 	async function submitHandler(event) {
 		const form = event.target;
