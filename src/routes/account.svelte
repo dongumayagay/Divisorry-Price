@@ -9,8 +9,7 @@
 		if (browser) {
 			if (!get(session)) return { status: 300, redirect: '/login' };
 
-			const userDetails = await getDoc(doc(db, 'userInfo', get(session).uid));
-			console.log(userDetails.data());
+			const userDetails = await (await getDoc(doc(db, 'userInfo', get(session).uid))).data();
 			return { props: { userDetails } };
 		}
 		return {};
@@ -40,15 +39,6 @@
 			alert(formatErrorCode(error.code));
 		}
 	}
-
-	// let orders = [
-	// 	{
-	// 		itemName: 'Item_name',
-	// 		quantity: 69,
-	// 		price: 4.2,
-	// 		date: new Date().toUTCString()
-	// 	}
-	// ];
 	let orders = [];
 </script>
 
