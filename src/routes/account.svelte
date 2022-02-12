@@ -3,12 +3,14 @@
 	import { auth, db } from '$lib/firebase';
 	import { session } from '$lib/stores';
 	import { get } from 'svelte/store';
-	import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+	import { doc, onSnapshot, getDoc } from 'firebase/firestore';
 
 	export async function load() {
 		if (browser) {
 			if (!get(session)) return { status: 300, redirect: '/login' };
-			const userDetails = await getDoc(doc(db, 'userInfo', auth.currentUser.uid));
+
+			const userDetails = await getDoc(doc(db, 'userInfo', get(session).uid));
+			console.log(userDetails.data());
 			return { props: { userDetails } };
 		}
 		return {};
@@ -24,8 +26,13 @@
 
 	export let userDetails;
 
+	const unsubscribe = onSnapshot(doc(db, 'userInfo', $session.uid), (doc) => {
+		userDetails = doc.data();
+	});
+
 	async function logout() {
 		try {
+			unsubscribe();
 			await signOut(auth);
 			goto('/login');
 		} catch (error) {
@@ -33,10 +40,6 @@
 			alert(formatErrorCode(error.code));
 		}
 	}
-
-	onSnapshot(doc(db, 'userInfo', auth.currentUser.uid), (doc) => {
-		userDetails = doc.data();
-	});
 
 	// let orders = [
 	// 	{

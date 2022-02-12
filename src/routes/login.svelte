@@ -31,7 +31,7 @@
 			goto('/account');
 		} catch (error) {
 			console.log(error.code);
-			code = alert(formatErrorCode(error.code));
+			alert(formatErrorCode(error.code));
 		}
 	}
 </script>
