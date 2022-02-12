@@ -1,5 +1,6 @@
 <script>
 	import { cart } from '$lib/stores';
+	import { formatCurrency } from '$lib/utils';
 	export let item;
 
 	function removeItem(id) {
@@ -16,6 +17,8 @@
 		item.quantity += toadd;
 		saveCart();
 	}
+
+	// $: display_qty = formatCurrency(item.quantity);
 </script>
 
 <div
@@ -27,7 +30,7 @@
 		class=" aspect-square border border-black rounded-xl p-1 bg-contain bg-center bg-no-repeat bg-origin-content bg-white col-span-1"
 	/>
 	<section class="col-span-1 flex flex-col justify-between aspect-square p-1">
-		<h2 class="text-2xl text-neutral-600">₱{(item.price * 50).toFixed(2)}</h2>
+		<h2 class="text-2xl text-neutral-600">₱{formatCurrency(item.price * 50)}</h2>
 		<div class="pb-2">
 			<span class="font-medium text-lg text-center"> Quantity </span>
 			<form on:submit|preventDefault={() => {}} class="flex items-center justify-center space-x-1">

@@ -1,35 +1,23 @@
-<!-- <script context="module">
-	export async function load({ params, fetch }) {
-		const product_id = params.product_id;
-		const url = `/api/product/${product_id}`;
-		const res = await fetch(url);
-		const item = await res.json();
-		return {
-			props: {
-				item
-			}
-		};
-	}
-</script> -->
 <script>
 	import { showCart, cart } from '$lib/stores';
 	import { goto } from '$app/navigation';
+	import { formatCurrency } from '$lib/utils';
 	export let product;
 
 	let innerWidth;
 	let quantity = 1;
 
 	//
-	import { spring } from 'svelte/motion';
+	// import { spring } from 'svelte/motion';
 
-	const displayed_count = spring();
-	$: displayed_count.set(quantity);
-	$: offset = modulo($displayed_count, 1);
+	// const displayed_count = spring();
+	// $: displayed_count.set(quantity);
+	// $: offset = modulo($displayed_count, 1);
 
-	function modulo(n, m) {
-		// handle negative numbers
-		return ((n % m) + m) % m;
-	}
+	// function modulo(n, m) {
+	// 	// handle negative numbers
+	// 	return ((n % m) + m) % m;
+	// }
 	//
 
 	function openCart() {
@@ -71,7 +59,7 @@
 		/>
 		<form on:submit|preventDefault={addToCart} class="p-4 space-y-4 flex flex-col">
 			<h1 class=" text-4xl font-bold">{product.title}</h1>
-			<h2 class=" text-xl font-semibold">₱{(product.price * 50).toFixed(2)}</h2>
+			<h2 class=" text-xl font-semibold">₱{formatCurrency(product.price * 50)}</h2>
 			<div class="flex items-center space-x-1 justify-evenly ">
 				<span class="font-semibold text-2xl mr-4 text-center"> Quantity </span>
 				<span class="flex items-center space-x-1">
@@ -96,12 +84,7 @@
 						max="99"
 						class="rounded-full appearance-none w-16 h-10 border-2 text-right font-bold text-lg"
 					/>
-					<!-- <div class="counter-viewport">
-						<div class="counter-digits" style="transform: translate(0, {100 * offset}%)">
-							<strong class="hidden" aria-hidden="true">{Math.floor($displayed_count + 1)}</strong>
-							<strong>{Math.floor($displayed_count)}</strong>
-						</div>
-					</div> -->
+
 					<button
 						type="button"
 						on:click={() => {

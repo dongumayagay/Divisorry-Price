@@ -1,4 +1,6 @@
 <script>
+	import { formatCurrency } from '$lib/utils';
+
 	export let product;
 </script>
 
@@ -11,7 +13,9 @@
 	>
 		<section class=" bg-neutral-900/70 py-1 px-2 rounded-xl w-full">
 			<h1 class="text-white font-semibold">{product.title}</h1>
-			<h3 class=" text-right font-medium text-neutral-300">₱{(product.price * 50).toFixed(2)}</h3>
+			<h3 class=" text-right font-medium text-neutral-300">
+				₱{formatCurrency(product.price * 50)}
+			</h3>
 		</section>
 	</a>
 </div>
