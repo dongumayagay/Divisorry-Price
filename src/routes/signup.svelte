@@ -18,7 +18,6 @@
 	import { goto } from '$app/navigation';
 	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 	import { doc, setDoc } from 'firebase/firestore';
-	import { prerender } from './contact.svelte';
 
 	async function submitHandler(event) {
 		const form = event.target;
