@@ -18,6 +18,7 @@
 		try {
 			await addDoc(feedbackColRef, data);
 			form.reset();
+			alert('Your feedback has been sent, Thanks You.');
 		} catch (error) {
 			console.log(error);
 		}
