@@ -1,5 +1,5 @@
 <script>
-	export let orders;
+	let orders = [];
 </script>
 
 <section class="">

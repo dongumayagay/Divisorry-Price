@@ -56,6 +56,7 @@
 				<input
 					required
 					name="firstName"
+					autocapitalize="words"
 					class="w-full rounded-full px-4 text-lg"
 					type="text"
 					placeholder="First name"
@@ -66,6 +67,7 @@
 				<input
 					required
 					name="lastName"
+					autocapitalize="words"
 					class="w-full rounded-full px-4 text-lg"
 					type="text"
 					placeholder="Last name"

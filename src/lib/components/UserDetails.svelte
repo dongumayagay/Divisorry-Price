@@ -1,24 +1,26 @@
 <script>
-	import { doc, updateDoc } from 'firebase/firestore';
-	import { db } from '$lib/firebase';
+	import { doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore';
+	import { auth, db } from '$lib/firebase';
 	import { slide, scale } from 'svelte/transition';
 	import { session } from '$lib/stores';
 	import { formatErrorCode } from '$lib/utils';
+	import { updateProfile } from 'firebase/auth';
 
+	export let userInfoDocRef;
 	export let userDetails;
 
 	let readonly = true;
 	let collapse = true;
 
 	async function saveUserDetails() {
-		console.log('trying to save');
 		try {
-			console.log(userDetails);
-			await updateDoc(doc(db, 'userInfo', $session.uid), userDetails);
-			readonly != readonly;
+			await updateDoc(userInfoDocRef, { ...userDetails });
+			await updateProfile(auth.currentUser, {
+				displayName: userDetails.firstName
+			});
+			console.log('done update');
 		} catch (error) {
 			console.log(error);
-			alert(formatErrorCode(error.code));
 		}
 	}
 </script>
@@ -36,7 +38,7 @@
 			/>
 			Your Information Details
 		</h1>
-		{#if !collapse}
+		{#if !collapse && $session}
 			<div transition:scale|local>
 				{#if !readonly}
 					<button

@@ -1,6 +1,6 @@
 <script context="module">
 	import { browser } from '$app/env';
-	import { auth } from '$lib/firebase';
+	import { auth, db } from '$lib/firebase';
 	import { session } from '$lib/stores';
 	import { get } from 'svelte/store';
 
@@ -16,20 +16,31 @@
 	import YourOrders from '$lib/components/YourOrders.svelte';
 	import UserDetails from '$lib/components/UserDetails.svelte';
 	import { goto } from '$app/navigation';
-	import { signOut } from 'firebase/auth';
 	import { formatErrorCode } from '$lib/utils';
+	import { signOut } from 'firebase/auth';
+	import { doc, onSnapshot } from 'firebase/firestore';
 
-	$: if (!$session && browser) goto('/login');
+	let userDetails;
+	let userInfoDocRef;
+	let unsub;
 
 	async function logout() {
+		unsub();
 		try {
 			await signOut(auth);
 		} catch (error) {
-			console.log(error.code);
+			console.log(error);
 			alert(formatErrorCode(error.code));
 		}
 	}
-	let orders = [];
+
+	$: if (!$session && browser) goto('/login');
+	$: if ($session) {
+		userInfoDocRef = doc(db, 'userInfo', $session.uid);
+		unsub = onSnapshot(userInfoDocRef, (doc) => {
+			userDetails = doc.data();
+		});
+	}
 </script>
 
 <main class="container mx-auto py-8 px-4 space-y-4">
@@ -39,11 +50,12 @@
 			>logout</button
 		>
 	</header>
-	<h1 class="text-xl sm:text-3xl py-4 text-center">
-		<!-- Kamusta Suking, <span class="capitalize">{userDetails.firstName}!</span> -->
-		{$session ? $session.email : '. . .'}
+	<h1 class="text-xl sm:text-3xl py-4 text-center font-medium">
+		Kamusta Suking, <span class="capitalize text-yellow-500">
+			{userDetails ? userDetails.firstName + '!' : '. . .'}
+		</span>
 	</h1>
-	<!-- 
-	<UserDetails {userDetails} /> -->
-	<YourOrders {orders} />
+
+	<UserDetails {userDetails} {userInfoDocRef} />
+	<YourOrders />
 </main>
