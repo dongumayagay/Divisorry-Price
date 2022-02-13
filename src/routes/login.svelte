@@ -4,6 +4,7 @@
 	import { auth } from '$lib/firebase';
 	import { session } from '$lib/stores';
 	import { get } from 'svelte/store';
+
 	export async function load() {
 		if (browser) {
 			if (get(session)) return { status: 300, redirect: '/account' };
@@ -18,6 +19,8 @@
 	import { signInWithEmailAndPassword } from 'firebase/auth';
 	import { goto } from '$app/navigation';
 
+	$: if ($session) goto('/account');
+
 	async function submitHandler(event) {
 		const form = event.target;
 		const formData = new FormData(form);
@@ -27,10 +30,9 @@
 			data[key] = value;
 		}
 		try {
-			$session = await signInWithEmailAndPassword(auth, data.email, data.password);
-			goto('/account');
+			await signInWithEmailAndPassword(auth, data.email, data.password);
 		} catch (error) {
-			console.log(error.code);
+			console.log(error);
 			alert(formatErrorCode(error.code));
 		}
 	}

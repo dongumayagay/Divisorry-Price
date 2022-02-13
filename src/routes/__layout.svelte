@@ -1,23 +1,33 @@
-<script context="module">
+<!-- <script context="module">
 	import { browser } from '$app/env';
 	import { auth } from '$lib/firebase';
 	import { onAuthStateChanged } from 'firebase/auth';
 	import { session } from '$lib/stores';
-
+	import { get } from 'svelte/store';
 	export async function load() {
 		if (browser) {
-			onAuthStateChanged(auth, (user) => session.set(user));
+			onAuthStateChanged(auth, (user) => {
+				console.log('ladsjf');
+				session.set(user);
+				console.log(get(session));
+			});
 		}
 		return {};
 	}
-</script>
-
+</script> -->
 <script>
 	import '../app.css';
 	import Navbar from '$lib/components/Navbar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import Cart from '$lib/components/Cart.svelte';
-	import { showCart } from '$lib/stores';
+	import { session, showCart } from '$lib/stores';
+	import { onAuthStateChanged } from 'firebase/auth';
+	import { auth } from '$lib/firebase';
+
+	onAuthStateChanged(auth, (user) => {
+		$session = user;
+		console.log('session updated');
+	});
 </script>
 
 <div class="pb-[125px] relative min-h-screen h-full flex flex-col bg-neutral-50 ">

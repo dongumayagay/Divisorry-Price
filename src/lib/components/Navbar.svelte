@@ -30,7 +30,7 @@
 				alt="brand logo"
 			/>
 		</a>
-		<a sveltekit:prefetch href={'/account'} aria-label="account"
+		<a sveltekit:prefetch href={'/login'} aria-label="account"
 			><svg
 				xmlns="http://www.w3.org/2000/svg"
 				class="h-6 lg:h-7 hover:text-yellow-500 transition-colors duration-500 stroke-[1.5] lg:stroke-2"

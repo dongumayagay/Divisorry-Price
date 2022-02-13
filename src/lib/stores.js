@@ -3,10 +3,9 @@ import { browser } from '$app/env';
 
 export let showCart = writable(false);
 
-// const storedSession = JSON.parse(browser && localStorage.getItem('session')) || null;
-// export let session = writable(browser && storedSession);
-// session.subscribe((val) => browser && (localStorage.session = JSON.stringify(val)));
-export let session = writable();
+const storedSession = JSON.parse(browser && localStorage.getItem('session')) || null;
+export let session = writable(browser && storedSession);
+session.subscribe((val) => browser && (localStorage.session = JSON.stringify(val)));
 
 const storedcart = JSON.parse(browser && localStorage.getItem('cart')) || [];
 export const cart = writable(browser && storedcart);

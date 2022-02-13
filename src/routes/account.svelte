@@ -1,16 +1,12 @@
 <script context="module">
 	import { browser } from '$app/env';
-	import { auth, db } from '$lib/firebase';
+	import { auth } from '$lib/firebase';
 	import { session } from '$lib/stores';
 	import { get } from 'svelte/store';
-	import { doc, onSnapshot, getDoc } from 'firebase/firestore';
 
 	export async function load() {
 		if (browser) {
 			if (!get(session)) return { status: 300, redirect: '/login' };
-
-			const userDetails = await (await getDoc(doc(db, 'userInfo', get(session).uid))).data();
-			return { props: { userDetails } };
 		}
 		return {};
 	}
@@ -23,17 +19,11 @@
 	import { signOut } from 'firebase/auth';
 	import { formatErrorCode } from '$lib/utils';
 
-	export let userDetails;
-
-	const unsubscribe = onSnapshot(doc(db, 'userInfo', $session.uid), (doc) => {
-		userDetails = doc.data();
-	});
+	$: if (!$session && browser) goto('/login');
 
 	async function logout() {
 		try {
-			unsubscribe();
 			await signOut(auth);
-			goto('/login');
 		} catch (error) {
 			console.log(error.code);
 			alert(formatErrorCode(error.code));
@@ -50,9 +40,10 @@
 		>
 	</header>
 	<h1 class="text-xl sm:text-3xl py-4 text-center">
-		Kamusta Suking, <span class="capitalize">{userDetails.firstName}!</span>
+		<!-- Kamusta Suking, <span class="capitalize">{userDetails.firstName}!</span> -->
+		{$session ? $session.email : '. . .'}
 	</h1>
-
-	<UserDetails {userDetails} />
+	<!-- 
+	<UserDetails {userDetails} /> -->
 	<YourOrders {orders} />
 </main>

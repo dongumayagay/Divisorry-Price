@@ -19,6 +19,8 @@
 	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 	import { doc, setDoc } from 'firebase/firestore';
 
+	$: if ($session) goto('/account');
+
 	async function submitHandler(event) {
 		const form = event.target;
 		const formData = new FormData(form);
@@ -28,12 +30,12 @@
 			data[key] = value;
 		}
 		try {
-			$session = await createUserWithEmailAndPassword(auth, data.email, data.password);
+			await createUserWithEmailAndPassword(auth, data.email, data.password);
+			await updateProfile(auth.currentUser, { displayName: data.firstName });
 			delete data.email;
 			delete data.password;
 			await setDoc(doc(db, 'userInfo', auth.currentUser.uid), data);
 			form.reset();
-			goto('/account');
 		} catch (error) {
 			console.log(error);
 			alert(formatErrorCode(error.code));
