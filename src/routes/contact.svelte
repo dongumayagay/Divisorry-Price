@@ -8,13 +8,9 @@
 	const feedbackColRef = collection(db, 'feedbacks');
 
 	async function submitHandler(event) {
-		const form = event.target;
-		const formData = new FormData(form);
-		const data = { createdAt: serverTimestamp() };
-		for (let field of formData) {
-			const [key, value] = field;
-			data[key] = value;
-		}
+		const formData = new FormData(event.target);
+		let data = Object.fromEntries(formData);
+		data['createdAt'] = serverTimestamp();
 		try {
 			await addDoc(feedbackColRef, data);
 			form.reset();

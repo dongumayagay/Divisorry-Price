@@ -43,6 +43,8 @@
 	}
 </script>
 
+<svelte:head><title>Your Account | Divisorry Price</title></svelte:head>
+
 <main class="container mx-auto py-8 px-4 space-y-4">
 	<header class="flex justify-between items-center">
 		<span class="uppercase font-semibold text-2xl"> Your Account </span>

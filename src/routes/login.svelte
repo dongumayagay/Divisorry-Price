@@ -22,13 +22,8 @@
 	$: if ($session) goto('/account');
 
 	async function submitHandler(event) {
-		const form = event.target;
-		const formData = new FormData(form);
-		const data = {};
-		for (let field of formData) {
-			const [key, value] = field;
-			data[key] = value;
-		}
+		const formData = new FormData(event.target);
+		let data = Object.fromEntries(formData);
 		try {
 			await signInWithEmailAndPassword(auth, data.email, data.password);
 		} catch (error) {
@@ -37,6 +32,8 @@
 		}
 	}
 </script>
+
+<svelte:head><title>Login | Divisorry Price</title></svelte:head>
 
 <div class="flex-1 flex justify-center items-center">
 	<main

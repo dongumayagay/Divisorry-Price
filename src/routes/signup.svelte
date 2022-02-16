@@ -4,6 +4,12 @@
 	import { auth, db } from '$lib/firebase';
 	import { session } from '$lib/stores';
 	import { get } from 'svelte/store';
+	import { navigating } from '$app/stores';
+	import { formatErrorCode } from '$lib/utils';
+	import { goto } from '$app/navigation';
+	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+	import { doc, setDoc } from 'firebase/firestore';
+
 	export async function load() {
 		if (browser) {
 			if (get(session)) return { status: 300, redirect: '/account' };
@@ -13,35 +19,26 @@
 </script>
 
 <script>
-	import { navigating } from '$app/stores';
-	import { formatErrorCode } from '$lib/utils';
-	import { goto } from '$app/navigation';
-	import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-	import { doc, setDoc } from 'firebase/firestore';
-
 	$: if ($session) goto('/account');
 
 	async function submitHandler(event) {
-		const form = event.target;
-		const formData = new FormData(form);
-		const data = {};
-		for (let field of formData) {
-			const [key, value] = field;
-			data[key] = value;
-		}
+		const formData = new FormData(event.target);
+		const { email, password, ...data } = Object.fromEntries(formData);
 		try {
-			await createUserWithEmailAndPassword(auth, data.email, data.password);
-			await updateProfile(auth.currentUser, { displayName: data.firstName });
-			delete data.email;
-			delete data.password;
-			await setDoc(doc(db, 'userInfo', auth.currentUser.uid), data);
-			form.reset();
+			await createUserWithEmailAndPassword(auth, email, password);
+			await Promise.all([
+				updateProfile(auth.currentUser, { displayName: data.firstName }),
+				setDoc(doc(db, 'userInfo', auth.currentUser.uid), data)
+			]);
+			event.target.reset();
 		} catch (error) {
 			console.log(error);
 			alert(formatErrorCode(error.code));
 		}
 	}
 </script>
+
+<svelte:head><title>Signup | Divisorry Price</title></svelte:head>
 
 <div class="flex-1 flex justify-center items-center">
 	<main
