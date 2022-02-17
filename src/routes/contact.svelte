@@ -13,8 +13,8 @@
 		data['createdAt'] = serverTimestamp();
 		try {
 			await addDoc(feedbackColRef, data);
-			form.reset();
-			alert('Your feedback has been sent, Thanks You.');
+			event.target.reset();
+			alert('Your feedback has been sent, Thank you.');
 		} catch (error) {
 			console.log(error);
 		}
