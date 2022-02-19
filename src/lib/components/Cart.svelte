@@ -1,7 +1,7 @@
 <script>
 	import { fade, fly } from 'svelte/transition';
 	import { flip } from 'svelte/animate';
-	import { showCart, cart, total } from '$lib/stores';
+	import { showCart, cart, total, session } from '$lib/stores';
 	import CartItem from './CartItem.svelte';
 	import { page } from '$app/stores';
 	import { formatCurrency } from '$lib/utils';
@@ -80,19 +80,29 @@
 				</div>
 			{/if}
 		</main>
-		<footer
-			class=" border-t-2 border-black z-30  bottom-0 w-[500px] max-w-full bg-white py-3 px-4 grid grid-cols-3"
-		>
-			<div class="col-span-2">
-				<span class="block text-sm">Total:</span>
-				<span class="pl-4 text-xl font-medium tracking-wider"
-					>₱{formatCurrency($display_total)}</span
-				>
-			</div>
-			<div class="col-span-1 grid place-content-center">
-				<button class="bg-neutral-900 text-white py-2 px-4 rounded-full text-lg">Checkout</button>
-			</div>
-		</footer>
+		{#if $cart.length > 0}
+			<footer
+				class=" border-t-2 border-black z-30  bottom-0 w-[500px] max-w-full bg-white py-3 px-4 flex justify-between items-center"
+			>
+				<div>
+					<span class="block text-sm">Total:</span>
+					<span class="pl-4 text-xl font-medium tracking-wider"
+						>₱{formatCurrency($display_total)}</span
+					>
+				</div>
+				<div>
+					{#if $session}
+						<button class="bg-neutral-900 text-white py-2 px-4 rounded-full text-lg"
+							>Checkout</button
+						>
+					{:else}
+						<a href={'/login'} class="bg-neutral-900 text-white py-3 px-4 rounded-full text-lg"
+							>Login to Checkout</a
+						>
+					{/if}
+				</div>
+			</footer>
+		{/if}
 	</aside>
 </div>
 
