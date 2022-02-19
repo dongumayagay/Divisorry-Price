@@ -20,7 +20,7 @@
 
 <script>
 	$: if ($session) goto('/account');
-
+	let errorMessage;
 	async function submitHandler(event) {
 		const formData = new FormData(event.target);
 		const { email, password, ...data } = Object.fromEntries(formData);
@@ -33,7 +33,8 @@
 			event.target.reset();
 		} catch (error) {
 			console.log(error);
-			alert(formatErrorCode(error.code));
+			// alert(formatErrorCode(error.code));
+			errorMessage = formatErrorCode(error.code);
 		}
 	}
 </script>
@@ -51,6 +52,7 @@
 			<label class="pb-2 col-span-1">
 				<span class="inline-block text-sm pl-4"> First Name </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="firstName"
 					autocapitalize="words"
@@ -62,6 +64,7 @@
 			<label class="pb-2 col-span-1">
 				<span class="inline-block text-sm pl-4"> Last name </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="lastName"
 					autocapitalize="words"
@@ -73,6 +76,7 @@
 			<label class="pb-2 col-span-2">
 				<span class="inline-block text-sm pl-4"> Street Address</span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="street"
 					class="w-full rounded-full px-4 text-lg"
@@ -83,6 +87,7 @@
 			<label class="pb-2 col-span-1">
 				<span class="inline-block text-sm pl-4"> City / Municipality </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="city"
 					class="w-full rounded-full px-4 text-lg"
@@ -93,6 +98,7 @@
 			<label class="pb-2 col-span-1">
 				<span class="inline-block text-sm pl-4">Province </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="province"
 					class="w-full rounded-full px-4 text-lg"
@@ -103,6 +109,7 @@
 			<label class="pb-2 col-span-2">
 				<span class="inline-block text-sm pl-4"> Email </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="email"
 					class="w-full rounded-full px-4 text-lg"
@@ -113,6 +120,7 @@
 			<label class="pb-6 col-span-2">
 				<span class="inline-block text-sm pl-4"> Password </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="password"
 					class="w-full rounded-full px-4 text-lg"
@@ -120,7 +128,9 @@
 					placeholder="Password"
 				/>
 			</label>
-
+			{#if errorMessage}
+				<p class="col-span-2 mb-4 text-center text-red-500">{errorMessage}</p>
+			{/if}
 			<button
 				class="col-span-2 grid grid-cols-3 items-center  bg-neutral-900 rounded-full px-4 py-3 capitalize tracking-widest text-lg font-medium text-white "
 				type="submit"

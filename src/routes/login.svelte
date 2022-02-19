@@ -20,6 +20,7 @@
 	import { goto } from '$app/navigation';
 
 	$: if ($session) goto('/account');
+	let errorMessage;
 
 	async function submitHandler(event) {
 		const formData = new FormData(event.target);
@@ -27,8 +28,19 @@
 		try {
 			await signInWithEmailAndPassword(auth, data.email, data.password);
 		} catch (error) {
-			console.log(error);
-			alert(formatErrorCode(error.code));
+			console.log(error.code);
+			errorMessage = formatErrorCode(error.code);
+
+			// alert(formatErrorCode(error.code));
+			// switch (error.code) {
+			// 	case 'auth/user-not-found':
+			// 		errorMessage = "User doesn't exist";
+			// 		break;
+
+			// 	default:
+			// 		errorMessage = formatErrorCode(error.code);
+			// 		break;
+			// }
 		}
 	}
 </script>
@@ -46,6 +58,7 @@
 			<label class="pb-2">
 				<span class="inline-block text-sm pl-4"> Email </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="email"
 					class="w-full rounded-full px-4 text-lg"
@@ -56,6 +69,7 @@
 			<label class="pb-6">
 				<span class="inline-block text-sm pl-4"> Password </span>
 				<input
+					on:focus={() => (errorMessage = null)}
 					required
 					name="password"
 					class="w-full rounded-full px-4 text-lg"
@@ -63,6 +77,9 @@
 					placeholder="Password"
 				/>
 			</label>
+			{#if errorMessage}
+				<p class="mb-4 text-center text-red-500">{errorMessage}</p>
+			{/if}
 			<button
 				class="grid grid-cols-3 items-center  bg-neutral-900 rounded-full px-4 py-3 capitalize tracking-widest text-lg font-medium text-white"
 				type="submit"
