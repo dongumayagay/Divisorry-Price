@@ -27,8 +27,9 @@
 <svelte:head><title>Divisorry Price - About</title></svelte:head>
 <article class="container mx-auto p-8">
 	<h1 class="text-center text-4xl font-bold">About</h1>
+
 	<p class="py-2 text-lg">
-		Ecommerce Project that uses <a
+		Ecommerce Demo Project that uses <a
 			class="border-b border-black font-medium"
 			href="https://kit.svelte.dev/">Sveltekit</a
 		>
