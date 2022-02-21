@@ -1,21 +1,22 @@
 <script>
 	import { updateDoc } from 'firebase/firestore';
-	import { auth } from '$lib/firebase';
+	import { auth, db } from '$lib/firebase';
 	import { slide, scale } from 'svelte/transition';
 	import { session } from '$lib/stores';
 	import { updateProfile } from 'firebase/auth';
-
-	export let userInfoDocRef;
-	export let userDetails;
+	import { userDetails } from '$lib/stores';
+	import { doc } from 'firebase/firestore';
+	const userInfoDocRef = doc(db, 'userInfo', $session.uid);
+	// export let userDetails;
 
 	let readonly = true;
 	let collapse = true;
 
 	async function saveUserDetails() {
 		try {
-			await updateDoc(userInfoDocRef, { ...userDetails });
+			await updateDoc(userInfoDocRef, { ...$userDetails });
 			await updateProfile(auth.currentUser, {
-				displayName: userDetails.firstName
+				displayName: $userDetails.firstName
 			});
 			console.log('done update');
 		} catch (error) {
@@ -57,7 +58,7 @@
 			</div>
 		{/if}
 	</header>
-	{#if !collapse}
+	{#if !collapse && $userDetails}
 		<form
 			transition:slide|local
 			class="grid grid-cols-2 gap-x-2 border-2 border-black p-2 rounded-xl list-none"
@@ -68,7 +69,7 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.firstName}
+					bind:value={$userDetails.firstName}
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
@@ -77,7 +78,7 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.lastName}
+					bind:value={$userDetails.lastName}
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-2 ">
@@ -86,7 +87,7 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.address.street}
+					bind:value={$userDetails.address.street}
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
@@ -95,7 +96,7 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.address.city}
+					bind:value={$userDetails.address.city}
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
@@ -104,9 +105,10 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.address.province}
+					bind:value={$userDetails.address.province}
 				/>
 			</label>
+			<button>Proceed to Payment</button>
 		</form>
 	{/if}
 </section>

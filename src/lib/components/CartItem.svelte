@@ -31,7 +31,7 @@
 		<h2 class="text-2xl text-neutral-600">₱{formatCurrency(item.price * 50)}</h2>
 		<div class="pb-2">
 			<span class="font-medium text-lg text-center"> Quantity </span>
-			<form class="flex items-center justify-center space-x-1">
+			<form on:submit|preventDefault class="flex items-center justify-center space-x-1">
 				<button type="button" on:click={() => addqty(-1)} class="aspect-square w-20">
 					<img src="/ui/minus.svg" alt="" />
 				</button>

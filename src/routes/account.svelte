@@ -1,7 +1,7 @@
 <script context="module">
 	import { browser } from '$app/env';
 	import { auth, db } from '$lib/firebase';
-	import { session } from '$lib/stores';
+	import { session, userDetails } from '$lib/stores';
 	import { get } from 'svelte/store';
 
 	export async function load() {
@@ -18,10 +18,9 @@
 	import { goto } from '$app/navigation';
 	import { formatErrorCode } from '$lib/utils';
 	import { signOut } from 'firebase/auth';
-	import { doc, onSnapshot } from 'firebase/firestore';
 
-	let userDetails;
-	let userInfoDocRef;
+	// let userDetails;
+	// let userInfoDocRef;
 	let unsub;
 
 	async function logout() {
@@ -35,12 +34,12 @@
 	}
 
 	$: if (!$session && browser) goto('/login');
-	$: if ($session) {
-		userInfoDocRef = doc(db, 'userInfo', $session.uid);
-		unsub = onSnapshot(userInfoDocRef, (doc) => {
-			userDetails = doc.data();
-		});
-	}
+	// $: if ($session) {
+	// 	userInfoDocRef = doc(db, 'userInfo', $session.uid);
+	// 	unsub = onSnapshot(userInfoDocRef, (doc) => {
+	// 		$userDetails = doc.data();
+	// 	});
+	// }
 </script>
 
 <svelte:head><title>Your Account | Divisorry Price</title></svelte:head>
@@ -55,11 +54,12 @@
 		</header>
 		<h1 class="text-xl sm:text-3xl py-4 text-center font-medium">
 			Kamusta Suking, <span class="capitalize text-yellow-500">
-				{userDetails ? userDetails.firstName + '!' : '. . .'}
+				<!-- {$session ? $session.displayName + '!' : '. . .'} -->
+				{$userDetails ? $userDetails.firstName + '!' : '. . .'}
 			</span>
 		</h1>
 
-		<UserDetails {userDetails} {userInfoDocRef} />
+		<UserDetails />
 		<YourOrders />
 	</main>
 {/if}

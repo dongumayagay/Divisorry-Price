@@ -94,7 +94,7 @@
 					/>
 				</label>
 				<label class="pb-2 col-span-1">
-					<span class="inline-block text-sm pl-4"> City / Municipality </span>
+					<span class="inline-block text-sm pl-4">City / Municipality</span>
 					<input
 						on:focus={() => (errorMessage = null)}
 						required
@@ -105,7 +105,7 @@
 					/>
 				</label>
 				<label class="pb-2 col-span-1">
-					<span class="inline-block text-sm pl-4">Province </span>
+					<span class="inline-block text-sm pl-4">Province</span>
 					<input
 						on:focus={() => (errorMessage = null)}
 						required

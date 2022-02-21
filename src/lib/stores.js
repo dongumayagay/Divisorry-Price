@@ -1,5 +1,6 @@
 import { derived, writable } from 'svelte/store';
 import { browser } from '$app/env';
+import { writeBatch } from 'firebase/firestore';
 
 export let showCart = writable(false);
 
@@ -14,3 +15,5 @@ cart.subscribe((val) => browser && (localStorage.cart = JSON.stringify(val)));
 export let total = derived(cart, (cart) =>
 	cart.reduce((acc, obj) => acc + obj.price * 50 * obj.quantity, 0)
 );
+
+export let userDetails = writable();
