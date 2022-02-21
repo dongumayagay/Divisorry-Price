@@ -1,9 +1,8 @@
 <script>
-	import { doc, getDoc, onSnapshot, updateDoc } from 'firebase/firestore';
-	import { auth, db } from '$lib/firebase';
+	import { updateDoc } from 'firebase/firestore';
+	import { auth } from '$lib/firebase';
 	import { slide, scale } from 'svelte/transition';
 	import { session } from '$lib/stores';
-	import { formatErrorCode } from '$lib/utils';
 	import { updateProfile } from 'firebase/auth';
 
 	export let userInfoDocRef;
@@ -87,7 +86,7 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.street}
+					bind:value={userDetails.address.street}
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
@@ -96,7 +95,7 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.city}
+					bind:value={userDetails.address.city}
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
@@ -105,7 +104,7 @@
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
 					{readonly}
-					bind:value={userDetails.province}
+					bind:value={userDetails.address.province}
 				/>
 			</label>
 		</form>
