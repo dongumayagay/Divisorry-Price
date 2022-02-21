@@ -25,7 +25,7 @@
 	let unsub;
 
 	async function logout() {
-		unsub();
+		await unsub();
 		try {
 			await signOut(auth);
 		} catch (error) {

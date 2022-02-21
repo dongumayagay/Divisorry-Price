@@ -1,22 +1,6 @@
 <script>
-	import { cart } from '$lib/stores';
 	import { formatCurrency } from '$lib/utils';
 	export let item;
-
-	function removeItem(id) {
-		$cart = $cart.filter((value) => value.id !== id);
-	}
-
-	function saveCart() {
-		if (item.quantity > 99) item.quantity = 99;
-		else if (item.quantity < 1) item.quantity = 1;
-		$cart = [...$cart];
-	}
-
-	function addqty(toadd) {
-		item.quantity += toadd;
-		saveCart();
-	}
 </script>
 
 <div
@@ -31,14 +15,11 @@
 		<h2 class="text-2xl text-neutral-600">₱{formatCurrency(item.price * 50)}</h2>
 		<div class="pb-2">
 			<span class="font-medium text-lg text-center"> Quantity </span>
-			<form class="flex items-center justify-center space-x-1">
-				<button type="button" on:click={() => addqty(-1)} class="aspect-square w-20">
+			<form on:submit|preventDefault={() => {}} class="flex items-center justify-center space-x-1">
+				<button type="button" class="aspect-square w-20">
 					<img src="/ui/minus.svg" alt="" />
 				</button>
 				<input
-					on:blur={() => {
-						saveCart();
-					}}
 					bind:value={item.quantity}
 					type="number"
 					required
@@ -46,17 +27,12 @@
 					max="99"
 					class="rounded-full appearance-none w-full h-10 border-2 text-right font-bold text-lg"
 				/>
-				<!-- on:mouseleave={saveCart} -->
-				<button type="button" on:click={() => addqty(1)} class="aspect-square w-20">
+				<button type="button" class="aspect-square w-20">
 					<img src="/ui/plus.svg" alt="" />
 				</button>
 				<button type="submit" />
 			</form>
 		</div>
-		<button
-			on:click={() => removeItem(item.id)}
-			class="font-medium text-white bg-neutral-900  px-4 py-2 rounded-full">Remove</button
-		>
 	</section>
 </div>
 

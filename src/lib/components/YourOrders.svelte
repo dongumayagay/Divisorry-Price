@@ -10,12 +10,13 @@
 	</header>
 	<ul class="px-8">
 		{#each orders as order}
-			<li class="grid grid-cols-4">
+			<!-- <li class="grid grid-cols-4">
 				<span class="col-span-1">{order.itemName}</span>
 				<span class="col-span-1">{order.quantity}</span>
 				<span class="col-span-1">₱{order.price.toFixed(2)}</span>
 				<span class="col-span-1">{order.date}</span>
-			</li>
+			</li> -->
+			test
 		{:else}
 			<p class="text-center text-lg">You currently haven't placed any orders yet</p>
 		{/each}

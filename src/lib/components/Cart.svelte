@@ -7,6 +7,7 @@
 	import { formatCurrency } from '$lib/utils';
 	import { tweened } from 'svelte/motion';
 	import { cubicInOut } from 'svelte/easing';
+	import { goto } from '$app/navigation';
 
 	const display_total = tweened($total, {
 		easing: cubicInOut
@@ -91,15 +92,19 @@
 					>
 				</div>
 				<div>
-					{#if $session}
-						<button class="bg-neutral-900 text-white py-2 px-4 rounded-full text-lg"
-							>Checkout</button
-						>
-					{:else}
-						<a href={'/login'} class="bg-neutral-900 text-white py-3 px-4 rounded-full text-lg"
-							>Login to Checkout</a
-						>
-					{/if}
+					<button
+						on:click={() => {
+							if ($page.url.pathname === '/cart') {
+								goto($session ? '/checkout' : '/login');
+							} else {
+								$showCart = false;
+								goto($session ? '/checkout' : '/login');
+							}
+						}}
+						class="bg-neutral-900 text-white py-2 px-4 rounded-full sm:text-lg"
+					>
+						{$session ? '' : 'Login to '}Checkout
+					</button>
 				</div>
 			</footer>
 		{/if}
