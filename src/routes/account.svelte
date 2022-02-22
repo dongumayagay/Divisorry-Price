@@ -18,13 +18,9 @@
 	import { goto } from '$app/navigation';
 	import { formatErrorCode } from '$lib/utils';
 	import { signOut } from 'firebase/auth';
-
-	// let userDetails;
-	// let userInfoDocRef;
-	let unsub;
+	import { getDoc, doc } from 'firebase/firestore';
 
 	async function logout() {
-		await unsub();
 		try {
 			await signOut(auth);
 		} catch (error) {
@@ -32,14 +28,18 @@
 			alert(formatErrorCode(error.code));
 		}
 	}
+	async function getUserDetails() {
+		const userInfoDocRef = doc(db, 'userInfo', $session.uid);
+		const docSnap = await getDoc(userInfoDocRef);
+		if (docSnap.exists()) {
+			$userDetails = docSnap.data();
+		}
+	}
 
+	$: if ($session && browser) {
+		getUserDetails();
+	}
 	$: if (!$session && browser) goto('/login');
-	// $: if ($session) {
-	// 	userInfoDocRef = doc(db, 'userInfo', $session.uid);
-	// 	unsub = onSnapshot(userInfoDocRef, (doc) => {
-	// 		$userDetails = doc.data();
-	// 	});
-	// }
 </script>
 
 <svelte:head><title>Your Account | Divisorry Price</title></svelte:head>
@@ -54,12 +54,11 @@
 		</header>
 		<h1 class="text-xl sm:text-3xl py-4 text-center font-medium">
 			Kamusta Suking, <span class="capitalize text-yellow-500">
-				<!-- {$session ? $session.displayName + '!' : '. . .'} -->
 				{$userDetails ? $userDetails.firstName + '!' : '. . .'}
 			</span>
 		</h1>
 
-		<UserDetails />
+		<UserDetails on:saveUserDetails={getUserDetails} />
 		<YourOrders />
 	</main>
 {/if}

@@ -1,5 +1,31 @@
 <script>
+	import { db } from '$lib/firebase';
+	import { collection, doc, getDocs, query, where } from 'firebase/firestore';
+	import { session } from '$lib/stores';
+	import { browser } from '$app/env';
+	import OrderCard from './OrderCard.svelte';
+	import { element } from 'svelte/internal';
+
 	let orders = [];
+	let orderId;
+	async function getOrders() {
+		const ordersRef = collection(db, 'orders');
+		const q = query(ordersRef, where('owner', '==', $session.uid));
+		try {
+			const docsSnap = await getDocs(q);
+			// orders = docsSnap.docs.map((element) => element.data());
+			docsSnap.forEach((doc) => {
+				// orders.push(doc.data());
+				orders = [...orders, { ...doc.data(), orderId: doc.id }];
+			});
+		} catch (error) {
+			console.log(error);
+		}
+	}
+
+	$: if ($session && browser) {
+		getOrders();
+	}
 </script>
 
 <section class="">
@@ -8,15 +34,9 @@
 			Your Orders
 		</h1>
 	</header>
-	<ul class="px-8">
+	<ul>
 		{#each orders as order}
-			<!-- <li class="grid grid-cols-4">
-				<span class="col-span-1">{order.itemName}</span>
-				<span class="col-span-1">{order.quantity}</span>
-				<span class="col-span-1">₱{order.price.toFixed(2)}</span>
-				<span class="col-span-1">{order.date}</span>
-			</li> -->
-			test
+			<OrderCard {order} />
 		{:else}
 			<p class="text-center text-lg">You currently haven't placed any orders yet</p>
 		{/each}

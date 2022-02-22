@@ -68,6 +68,7 @@
 						class="w-full rounded-full px-4 text-lg"
 						type="text"
 						placeholder="First name"
+						autocomplete="given-name"
 					/>
 				</label>
 				<label class="pb-2 col-span-1">
@@ -80,6 +81,7 @@
 						class="w-full rounded-full px-4 text-lg"
 						type="text"
 						placeholder="Last name"
+						autocomplete="family-name"
 					/>
 				</label>
 				<label class="pb-2 col-span-2">
@@ -91,6 +93,7 @@
 						class="w-full rounded-full px-4 text-lg"
 						type="text"
 						placeholder="Street Address"
+						autocomplete="street-address"
 					/>
 				</label>
 				<label class="pb-2 col-span-1">
@@ -102,6 +105,7 @@
 						class="w-full rounded-full px-4 text-lg"
 						type="text"
 						placeholder="City or Municipality"
+						autocomplete="city"
 					/>
 				</label>
 				<label class="pb-2 col-span-1">
@@ -113,6 +117,7 @@
 						class="w-full rounded-full px-4 text-lg"
 						type="text"
 						placeholder="Province"
+						autocomplete="province"
 					/>
 				</label>
 				<label class="pb-2 col-span-2">

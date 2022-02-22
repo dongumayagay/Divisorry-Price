@@ -6,9 +6,11 @@
 	import { updateProfile } from 'firebase/auth';
 	import { userDetails } from '$lib/stores';
 	import { doc } from 'firebase/firestore';
+	import { createEventDispatcher } from 'svelte';
 	const userInfoDocRef = doc(db, 'userInfo', $session.uid);
 	// export let userDetails;
 
+	const dispatch = createEventDispatcher();
 	let readonly = true;
 	let collapse = true;
 
@@ -18,7 +20,9 @@
 			await updateProfile(auth.currentUser, {
 				displayName: $userDetails.firstName
 			});
+			dispatch('saveUserDetails');
 			console.log('done update');
+			collapse = true;
 		} catch (error) {
 			console.log(error);
 		}
@@ -61,10 +65,10 @@
 	{#if !collapse && $userDetails}
 		<form
 			transition:slide|local
-			class="grid grid-cols-2 gap-x-2 border-2 border-black p-2 rounded-xl list-none"
+			class="grid grid-cols-2 gap-x-2 border-2 bg-neutral-800 py-2 px-3 rounded-xl list-none"
 		>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
-				<span class="block text-sm pl-4">First name</span>
+				<span class="block text-sm pl-4 text-neutral-200">First name</span>
 				<input
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
@@ -73,7 +77,7 @@
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
-				<span class="block text-sm pl-4">Last name</span>
+				<span class="block text-sm pl-4 text-neutral-200">Last name</span>
 				<input
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
@@ -82,7 +86,7 @@
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-2 ">
-				<span class="block text-sm pl-4">Street Address</span>
+				<span class="block text-sm pl-4 text-neutral-200">Street Address</span>
 				<input
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
@@ -91,7 +95,7 @@
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
-				<span class="block text-sm pl-4">City / Municipality</span>
+				<span class="block text-sm pl-4 text-neutral-200">City / Municipality</span>
 				<input
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
@@ -100,7 +104,7 @@
 				/>
 			</label>
 			<label class="pb-2 col-span-2 sm:col-span-1 ">
-				<span class="block text-sm pl-4">Province</span>
+				<span class="block text-sm pl-4 text-neutral-200">Province</span>
 				<input
 					class="block w-full rounded-full px-4 py-2 text-lg border overflow-auto"
 					class:border-black={!readonly}
@@ -108,7 +112,6 @@
 					bind:value={$userDetails.address.province}
 				/>
 			</label>
-			<button>Proceed to Payment</button>
 		</form>
 	{/if}
 </section>

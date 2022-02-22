@@ -7,19 +7,6 @@
 	let innerWidth;
 	let quantity = 1;
 
-	//
-	// import { spring } from 'svelte/motion';
-
-	// const displayed_count = spring();
-	// $: displayed_count.set(quantity);
-	// $: offset = modulo($displayed_count, 1);
-
-	// function modulo(n, m) {
-	// 	// handle negative numbers
-	// 	return ((n % m) + m) % m;
-	// }
-	//
-
 	function openCart() {
 		console.log('triggered open cart');
 		if (innerWidth < 640) {
