@@ -26,7 +26,7 @@
 						orderId: orderDocRef.id,
 						productId: element.id,
 						productName: element.name,
-						productPrice: element.price,
+						productPrice: element.price * 50,
 						quantity: element.quantity
 					});
 				})
